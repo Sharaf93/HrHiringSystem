@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<meta charset="utf-8"></meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+<title>Sumerge Hiring System</title>
+<link
+	href="resources/gentelella-master/vendors/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet"></link>
+<link
+	href="resources/gentelella-master/vendors/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet"></link>
+<link href="resources/gentelella-master/vendors/nprogress/nprogress.css"
+	rel="stylesheet"></link>
+
+<link
+	href="resources/gentelella-master/vendors/animate.css/animate.min.css"
+	rel="stylesheet"></link>
+<link href="resources/gentelella-master/build/css/custom.min.css"
+	rel="stylesheet"></link>
+</h:head>
+
+<h:body class="login">
+			<div>
+				<a class="hiddenanchor" id="signup"></a> <a class="hiddenanchor"
+					id="signin"></a>
+
+				<div class="login_wrapper">
+					<div class="animate form login_form">
+						<section class="login_content">
+							<h1>Sumerge Hiring System</h1>
+							<h:form>
+								<h2>Login Here</h2>
+								<div>
+									<h:inputText type="text" class="form-control" placeholder="Username"
+										required="required" value="#{pc_LoginPageAndRegistrationPage.username}"></h:inputText>
+								</div>
+								<div>
+									<h:inputSecret type="password" class="form-control"
+										placeholder="Password" required="required" value="#{pc_LoginPageAndRegistrationPage.password}"></h:inputSecret>
+								</div>
+								<div>
+							<h:commandButton type="submit" value="Login" id="button1"
+								class="btn btn-default submit" action="#{pc_LoginPageAndRegistrationPage.login}"></h:commandButton>
+							
+							<a class="to_pass" href="ResetPasswordPage.faces" onclick="">Forgot your password?</a>
+								</div>
+
+								<div class="clearfix"></div>
+
+								<div class="separator">
+									<p class="change_link">
+										New to site? <a href="#signup" class="to_register"> Create
+											Account </a>
+									</p>
+
+									<div class="clearfix"></div>
+									<br />
+
+									<div>
+										<h1>Sumerge Software Solutions</h1>
+										<p>©2016 All Rights Reserved. Sumerge Software Solutions</p>
+									</div>
+								</div>
+							</h:form>
+						</section>
+					</div>
+
+					<div id="register" class="animate form registration_form">
+						<section class="login_content">
+							<h1>Sumerge Hiring System</h1>
+							<form>
+								<h2>Create Account</h2>
+								<div>
+									<input type="text" class="form-control" placeholder="Username"
+										required="required" />
+								</div>
+								<div>
+									<input type="email" class="form-control" placeholder="Email"
+										required="required" />
+								</div>
+								<div>
+									<input type="password" class="form-control"
+										placeholder="Password" required="required" />
+								</div>
+								<div class="form-group">
+									<label>Position</label> <select class="form-control">
+										<option>HR Manager</option>
+										<option>HR Employee</option>
+									</select>
+								</div>
+								<div>
+									<a class="btn btn-default submit" href="index.html">Submit</a>
+								</div>
+
+								<div class="clearfix"></div>
+
+								<div class="separator">
+									<p class="change_link">
+										Already a member ? <a href="#signin" class="to_register">
+											Log in </a>
+									</p>
+
+									<div class="clearfix"></div>
+									<br />
+
+									<div>
+										<h1>
+											<i></i> Sumerge Software Solutions
+										</h1>
+										<p>©2016 All Rights Reserved. Sumerge Software Solutions</p>
+									</div>
+								</div>
+							</form>
+						</section>
+					</div>
+					<!-- ************************************** -->
+				</div>
+
+
+			</div>
+
+</h:body>
+</html>

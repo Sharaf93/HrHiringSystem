@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!-- jsf:pagecode language="java" location="/src/pagecode/ViewCandidate.java" --><!-- /jsf:pagecode -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>ViewCandidate</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="stylesheet" type="text/css" title="Style"
+		href="theme/stylesheet.css" />
+	<link href="css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="css/datepicker3.css" rel="stylesheet"/>
+	<link href="css/styles.css" rel="stylesheet"/>
+	
+	<style>
+	.switch {
+	  position: relative;
+	  display: inline-block;
+	  width: 60px;
+	  height: 34px;
+	}
+
+	.switch input {display:none;}
+
+	.slider {
+	  position: absolute;
+	  cursor: pointer;
+	  top: 0;
+	  left: 0;
+	  right: 0;
+	  bottom: 0;
+	  background-color: #ccc;
+	  -webkit-transition: .4s;
+	  transition: .4s;
+	}
+
+	.slider:before {
+	  position: absolute;
+	  content: "";
+	  height: 26px;
+	  width: 26px;
+	  left: 4px;
+	  bottom: 4px;
+	  background-color: white;
+	  -webkit-transition: .4s;
+	  transition: .4s;
+	}
+
+	input:checked + .slider {
+	  background-color: #2196F3;
+	}
+
+	input:focus + .slider {
+	  box-shadow: 0 0 1px #2196F3;
+	}
+
+	input:checked + .slider:before {
+	  -webkit-transform: translateX(26px);
+	  -ms-transform: translateX(26px);
+	  transform: translateX(26px);
+	}
+
+	/* Rounded sliders */
+	.slider.round {
+	  border-radius: 34px;
+	}
+
+	.slider.round:before {
+	  border-radius: 50%;
+	}
+	</style>
+	
+</h:head>
+<h:body>
+
+	<ui:include src="Header.xhtml"></ui:include>
+	<ui:include src="NavigationBar.xhtml"></ui:include>
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">View/Edit Candidate</h1>
+			</div>
+		</div><!--/.row-->
+		
+		<!-- TODO : make a Readonly version of this inputs -->
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading PersonalInfo">Personal Info.</div><!-- /.Panel-heading PersonalInfo -->
+						<div class="panel-body">
+							<div class="col-md-6">
+				
+								<div class="form-group">
+									<label>Name :</label>
+									<input class="form-control dontRead"/>
+								</div>
+
+								<div class="form-group">
+									<label>Email :</label>
+									<input class="form-control" />
+								</div>
+								
+								<div class="form-group">
+									<label>Phone` Number :</label>
+									<input class="form-control" />
+								</div>
+								
+								<div class="form-group">
+									<label>Date :</label>
+									<input class="form-control" />
+								</div>
+								
+								<div class="form-group">
+									<label>Position :</label>
+									<input class="form-control" />
+								</div>
+
+								<div class="form-group">
+									<label>Source :</label>
+									<input class="form-control" />
+								</div>
+								
+								<div class="form-group">
+									<label>HR Source :</label>
+									<input class="form-control" />
+								</div>
+								
+								<div class="form-group">
+									<label>Comments :</label>
+									<input class="form-control" />
+								</div>
+								
+								
+								<div class="form-group">
+									<label>Password</label>
+									<input  class="form-control"/>
+								</div>
+								
+								<div class="form-group">
+									<label>Comment :</label>
+									<textarea class="form-control" rows="3"></textarea>
+								</div>
+							</div><!-- /. inner col inside the body-->
+						</div><!-- /. panel-body-->
+				
+				</div><!-- / . panel-default-->
+				
+				<div class="panel panel-default">
+					<div class="panel-heading CVPhase">CV Phase</div><!-- /.Panel-heading PersonalInfo -->
+						<div class="panel-body">
+							<div class="col-md-6">
+				
+								<!--<label> Status : </label>-->
+								<div class="form-group">
+								<label>status: </label>
+								<br/>
+								<label class="switch"><input type="checkbox" checked="checked"/><div class="slider round"></div></label>
+								</div>
+
+								<!-- ToDO : to put Date widget -->
+								<div class="form-group">
+									<label>Date :</label>
+									<input class="form-control dontRead"/>
+								</div>
+								<!-- ToDO : to put Date widget -->
+								
+
+								<div class="form-group">
+									<label>Current/Expected Salary :</label>
+									<input type = "number" class="form-control dontRead"/>
+								</div>
+								
+								<div class="form-group">
+									<label>Reason Of Failure  :</label>
+									<select class="form-control" id="sel1">
+									<option>Irrelevant Experience</option>
+									<option>Out of the Country</option>
+									<option>Interest</option>
+									<option>Language</option>
+									<option>Culture</option>
+									<option>Communication skills</option>
+									<option>Expected salary</option>
+									<option>Gender</option>
+									<option>Overqualified</option>
+									<option>Age</option>
+									<option>Attitude</option>
+									<option>Technical competence</option>
+									</select>
+								</div>
+								
+								<div class="form-group">
+									<label>Comment :</label>
+									<textarea class="form-control" rows="3"></textarea>
+								</div>
+								
+							</div><!-- /. inner col inside the body-->
+						</div><!-- /. panel-body-->
+				
+				</div><!-- / . panel-default-->
+				
+				
+				<div class="panel panel-default">
+					<div class="panel-heading PhoneInterviewPhase">Phone Interview Phase</div><!-- /.Panel-heading PersonalInfo -->
+						<div class="panel-body">
+							<div class="col-md-6">
+				
+								<!--<label> Status : </label>-->
+								<div class="form-group">
+								<label>status: </label>
+								<br/>
+								<label class="switch"><input type="checkbox" checked="checked"/><div class="slider round"></div></label>
+								</div>
+
+								<!-- ToDO : to put Date widget -->
+								<div class="form-group">
+									<label>Date :</label>
+									<input class="form-control dontRead"/>
+								</div>
+								<!-- ToDO : to put Date widget -->
+								
+
+								<div class="form-group">
+									<label>Current/Expected Salary :</label>
+									<input type = "number" class="form-control dontRead"/>
+								</div>
+								
+								<div class="form-group">
+									<label>Reason Of Failure  :</label>
+									<select class="form-control" id="sel1">
+									<option>Irrelevant Experience</option>
+									<option>Out of the Country</option>
+									<option>Interest</option>
+									<option>Language</option>
+									<option>Culture</option>
+									<option>Communication skills</option>
+									<option>Expected salary</option>
+									<option>Gender</option>
+									<option>Overqualified</option>
+									<option>Age</option>
+									<option>Attitude</option>
+									<option>Technical competence</option>
+									</select>
+								</div>
+								
+								<div class="form-group">
+									<label>Comment :</label>
+									<textarea class="form-control" rows="3"></textarea>
+								</div>
+								
+							</div><!-- /. inner col inside the body-->
+						</div><!-- /. panel-body-->
+				
+				</div><!-- / . panel-default-->
+				
+				
+				<div class="panel panel-default">
+					<div class="panel-heading TestsPhase">Tests Phase</div><!-- /.Panel-heading PersonalInfo -->
+						<div class="panel-body">
+							<div class="col-md-6">
+				
+								<!--<label> Status : </label>-->
+								<div class="form-group">
+								<label>status: </label>
+								<br/>
+								<label class="switch"><input type="checkbox" checked="checked"/><div class="slider round"></div></label>
+								</div>
+
+								<!-- ToDO : to put Date widget -->
+								<div class="form-group">
+									<label>Date :</label>
+									<input class="form-control dontRead"/>
+								</div>
+								<!-- ToDO : to put Date widget -->
+								
+								<div class="form-group">
+									<label>IQ Test Score :</label>
+									<input type = "number" class="form-control dontRead"/>
+								</div>
+								
+								<div class="form-group">
+									<label>Technical Test Score :</label>
+									<input type = "number" class="form-control dontRead"/>
+								</div>
+								
+								<div class="form-group">
+									<label>English Test Score :</label>
+									<input type = "number" class="form-control dontRead"/>
+								</div>
+
+								
+								<div class="form-group">
+									<label>Reason Of Failure  :</label>
+									<select class="form-control" id="sel1">
+									<option>Irrelevant Experience</option>
+									<option>Out of the Country</option>
+									<option>Interest</option>
+									<option>Language</option>
+									<option>Culture</option>
+									<option>Communication skills</option>
+									<option>Expected salary</option>
+									<option>Gender</option>
+									<option>Overqualified</option>
+									<option>Age</option>
+									<option>Attitude</option>
+									<option>Technical competence</option>
+									</select>
+								</div>
+								
+								<div class="form-group">
+									<label>Comment :</label>
+									<textarea class="form-control" rows="3"></textarea>
+								</div>
+								
+							</div><!-- /. inner col inside the body-->
+						</div><!-- /. panel-body-->
+				
+				</div><!-- / . panel-default-->
+				
+				
+				<div class="panel panel-default">
+					<div class="panel-heading HRInterviewPhase">HR Interview Phase</div><!-- /.Panel-heading PersonalInfo -->
+						<div class="panel-body">
+							<div class="col-md-6">
+				
+								<!--<label> Status : </label>-->
+								<div class="form-group">
+								<label>status: </label>
+								<br/>
+								<label class="switch"><input type="checkbox" checked="checked"/><div class="slider round"></div></label>
+								</div>
+
+								<!-- ToDO : to put Date widget -->
+								<div class="form-group">
+									<label>Date :</label>
+									<input class="form-control dontRead"/>
+								</div>
+								<!-- ToDO : to put Date widget -->
+								
+								<div class="form-group">
+									<label>Reason Of Failure  :</label>
+									<select class="form-control" id="sel1">
+									<option>Irrelevant Experience</option>
+									<option>Out of the Country</option>
+									<option>Interest</option>
+									<option>Language</option>
+									<option>Culture</option>
+									<option>Communication skills</option>
+									<option>Expected salary</option>
+									<option>Gender</option>
+									<option>Overqualified</option>
+									<option>Age</option>
+									<option>Attitude</option>
+									<option>Technical competence</option>
+									</select>
+								</div>
+								
+								<div class="form-group">
+									<label>Comment :</label>
+									<textarea class="form-control" rows="3"></textarea>
+								</div>
+								
+							</div><!-- /. inner col inside the body-->
+						</div><!-- /. panel-body-->
+				
+				</div><!-- / . panel-default-->
+				
+				
+				<div class="panel panel-default">
+					<div class="panel-heading TechnincalInterviewPhase">Technincal Interview Phase</div><!-- /.Panel-heading PersonalInfo -->
+						<div class="panel-body">
+							<div class="col-md-6">
+				
+								<!--<label> Status : </label>-->
+								<div class="form-group">
+								<label>status: </label>
+								<br/>
+								<label class="switch"><input type="checkbox" checked="checked"/><div class="slider round"></div></label>
+								</div>
+
+								<!-- ToDO : to put Date widget -->
+								<div class="form-group">
+									<label>Date :</label>
+									<input class="form-control dontRead"/>
+								</div>
+								<!-- ToDO : to put Date widget -->
+								
+								<div class="form-group">
+									<label>Reason Of Failure  :</label>
+									<select class="form-control" id="sel1">
+									<option>Irrelevant Experience</option>
+									<option>Out of the Country</option>
+									<option>Interest</option>
+									<option>Language</option>
+									<option>Culture</option>
+									<option>Communication skills</option>
+									<option>Expected salary</option>
+									<option>Gender</option>
+									<option>Overqualified</option>
+									<option>Age</option>
+									<option>Attitude</option>
+									<option>Technical competence</option>
+									</select>
+								</div>
+								
+								<div class="form-group">
+									<label>Comment :</label>
+									<textarea class="form-control" rows="3"></textarea>
+								</div>
+								
+							</div><!-- /. inner col inside the body-->
+						</div><!-- /. panel-body-->
+				
+				</div><!-- / . panel-default-->
+				
+				
+				
+				<div class="panel panel-default">
+					<div class="panel-heading PresentationPhase">Presentation Phase</div><!-- /.Panel-heading PersonalInfo -->
+						<div class="panel-body">
+							<div class="col-md-6">
+				
+								<!--<label> Status : </label>-->
+								<div class="form-group">
+								<label>status: </label>
+								<br/>
+								<label class="switch"><input type="checkbox" checked="checked"/><div class="slider round"></div></label>
+								</div>
+
+								<!-- ToDO : to put Date widget -->
+								<div class="form-group">
+									<label>Date :</label>
+									<input class="form-control dontRead"/>
+								</div>
+								<!-- ToDO : to put Date widget -->
+								
+								<div class="form-group">
+									<label>Reason Of Failure  :</label>
+									<select class="form-control" id="sel1">
+									<option>Irrelevant Experience</option>
+									<option>Out of the Country</option>
+									<option>Interest</option>
+									<option>Language</option>
+									<option>Culture</option>
+									<option>Communication skills</option>
+									<option>Expected salary</option>
+									<option>Gender</option>
+									<option>Overqualified</option>
+									<option>Age</option>
+									<option>Attitude</option>
+									<option>Technical competence</option>
+									</select>
+								</div>
+								
+								<div class="form-group">
+									<label>Comment :</label>
+									<textarea class="form-control" rows="3"></textarea>
+								</div>
+								
+							</div><!-- /. inner col inside the body-->
+						</div><!-- /. panel-body-->
+				
+				</div><!-- / . panel-default-->
+				
+			</div><!-- /.col-->
+		</div><!-- /.row -->
+		
+		<!-- TODO : make a Readonly version of this inputs -->
+		
+	</div><!--/.main-->
+	
+	<ui:include src="Footer.xhtml"></ui:include>
+
+	<script src="js/lumino.glyphs.js"></script>
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+
+	<script>
+		!function ($) {
+			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
+				$(this).find('em:first').toggleClass("glyphicon-minus");	  
+			}); 
+			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
+
+		$(window).on('resize', function () {
+		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		});
+	</script>	
+</h:body>
+</html>
