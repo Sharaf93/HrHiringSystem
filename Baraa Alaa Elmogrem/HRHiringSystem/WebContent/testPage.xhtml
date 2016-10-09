@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!-- jsf:pagecode language="java" location="/src/pagecode/TestPage.java" --><!-- /jsf:pagecode -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>testPage</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" title="Style"
+		href="theme/stylesheet.css" />
+</h:head>
+<h:body><h:form id="form1" styleClass="form">
+		<ui:repeat var="o" value="#{PTMangedBean.lista}">
+		<h:inputText id="text1" styleClass="inputText" value="#{o.obj.s1}"></h:inputText>
+		</ui:repeat>
+		<h:commandButton type="submit" value="Submit" id="button1"
+			styleClass="commandButton" action="#{PTMangedBean.test}"></h:commandButton>
+	</h:form></h:body>
+</html>

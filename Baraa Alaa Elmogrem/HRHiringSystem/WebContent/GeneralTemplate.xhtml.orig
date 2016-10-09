@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+<ui:insert name = "title" ><title>GeneralTemplate</title></ui:insert>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+
+<<<<<<< working copy
+<!-- Bootstrap -->
+<link href="resources/gentelella-master/vendors/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet"></link>
+<link href="resources/gentelella-master/vendors/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet"></link>
+<link href="resources/gentelella-master/vendors/nprogress/nprogress.css" rel="stylesheet"></link>
+<link href="resources/gentelella-master/vendors/iCheck/skins/flat/green.css" rel="stylesheet"></link>
+=======
+	<!-- Bootstrap -->
+    <link href="resources/gentelella-master/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"></link>
+    <!-- Font Awesome -->
+    <link href="resources/gentelella-master/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet"></link>
+    <!-- NProgress -->
+    <link href="resources/gentelella-master/vendors/nprogress/nprogress.css" rel="stylesheet"></link>
+    <!-- iCheck -->
+    <link href="resources/gentelella-master/vendors/iCheck/skins/flat/green.css" rel="stylesheet"></link>
+    <!-- bootstrap-wysiwyg -->
+    <link href="resources/gentelella-master/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet"></link>
+    <!-- Select2 -->
+    <link href="resources/gentelella-master/vendors/select2/dist/css/select2.min.css" rel="stylesheet"></link>
+    <!-- Switchery -->
+    <link href="resources/gentelella-master/vendors/switchery/dist/switchery.min.css" rel="stylesheet"></link>
+    <!-- starrr -->
+    <link href="resources/gentelella-master/vendors/starrr/dist/starrr.css" rel="stylesheet"></link>
+  
+<script src="resources/gentelella-master/vendors/Flot/jquery.js"></script>
+<link href="resources/gentelella-master/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet"/>
+<link href="resources/gentelella-master/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+<link href="resources/gentelella-master/build/css/custom.min.css" rel="stylesheet"/>
+>>>>>>> destination
+
+
+<link href="resources/gentelella-master/build/css/custom.min.css" rel="stylesheet"></link>
+
+
+<link href="css/datepicker3.css" rel="stylesheet"></link>
+<link href="css/styles.css" rel="stylesheet"></link>
+<script src="js/lumino.glyphs.js"></script>
+<script src="js/chart.min.js"></script>
+<script src="js/chart-data.js"></script>
+<script src="js/easypiechart.js"></script>
+<script src="js/easypiechart-data.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+
+
+
+</h:head>
+<h:body >
+
+<<<<<<< working copy
+<ui:insert name="header"><ui:include src="Header.xhtml"></ui:include> </ui:insert>
+<ui:insert name="navigation"><ui:include src="NavigationBar.xhtml"></ui:include> </ui:insert>
+<ui:insert name="content"></ui:insert>
+<ui:insert name="footer"><ui:include src="Footer.xhtml"></ui:include> </ui:insert>
+=======
+
+<div>
+
+	    <div id="header">
+		<ui:insert name="header" >
+		  <ui:include src="/Header.xhtml" />
+		</ui:insert>
+	    </div>
+	    
+	    <div id="navigation">
+	  	<ui:insert name="navigation" >
+	 	  <ui:include src="/NavigationBar.xhtml" />
+	   	</ui:insert>
+	    </div>
+
+	    <div id="content">
+	  	<ui:insert name="content" >
+	 	  <ui:include src="/Content.xhtml" />
+	   	</ui:insert>
+	    </div>
+
+	    <div id="footer">
+    	<ui:insert name="footer" >
+    	  <ui:include src="/Footer.xhtml" />
+    	</ui:insert>
+   	    </div>
+
+   </div>
+>>>>>>> destination
+
+	<!-- jQuery -->
+<<<<<<< working copy
+	<script src="resources/gentelella-master/vendors/jquery/dist/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="resources/gentelella-master/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+	<!-- FastClick -->
+	<script src="resources/gentelella-master/vendors/fastclick/lib/fastclick.js"></script>
+	<!-- NProgress -->
+	<script src="resources/gentelella-master/vendors/nprogress/nprogress.js"></script>
+	<!-- morris.js -->
+	<script src="resources/gentelella-master/vendors/raphael/raphael.min.js"></script>
+	<script src="resources/gentelella-master/vendors/morris.js/morris.min.js"></script>
+	<!-- bootstrap-progressbar -->
+	<script
+		src="resources/gentelella-master/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+	<!-- bootstrap-daterangepicker -->
+	<script src="resources/gentelella-master/production/js/moment/moment.min.js"></script>
+	<script src="resources/gentelella-master/production/js/datepicker/daterangepicker.js"></script>
+=======
+    <script src="resources/gentelella-master/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="resources/gentelella-master/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="resources/gentelella-master/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="resources/gentelella-master/vendors/nprogress/nprogress.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="resources/gentelella-master/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="resources/gentelella-master/vendors/iCheck/icheck.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="resources/gentelella-master/production/js/moment/moment.min.js"></script>
+    <script src="resources/gentelella-master/production/js/datepicker/daterangepicker.js"></script>
+    <script src="resources/gentelella-master/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <!-- bootstrap-wysiwyg -->
+    <script src="resources/gentelella-master/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+    <script src="resources/gentelella-master/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+    <script src="resources/gentelella-master/vendors/google-code-prettify/src/prettify.js"></script>
+    <!-- jQuery Tags Input -->
+    <script src="resources/gentelella-master/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+    <!-- Switchery -->
+    <script src="resources/gentelella-master/vendors/switchery/dist/switchery.min.js"></script>
+    <!-- Select2 -->
+    <script src="resources/gentelella-master/vendors/select2/dist/js/select2.full.min.js"></script>
+    <!-- Parsley -->
+    <script src="resources/gentelella-master/vendors/parsleyjs/dist/parsley.min.js"></script>
+    <!-- Autosize -->
+    <script src="resources/gentelella-master/vendors/autosize/dist/autosize.min.js"></script>
+    <!-- jQuery autocomplete -->
+    <script src="resources/gentelella-master/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+    <!-- starrr -->
+    <script src="resources/gentelella-master/vendors/starrr/dist/starrr.js"></script>
+>>>>>>> destination
+
+<<<<<<< working copy
+	<!-- Custom Theme Scripts -->
+	 <script src="resources/gentelella-master/build/js/custom.min.js"></script>
+=======
+    <!-- Custom Theme Scripts -->
+    <script src="resources/gentelella-master/build/js/custom.min.js"></script>
+    
+    <script src="js/lumino.glyphs.js"></script>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/chart.min.js"></script>
+<script src="js/chart-data.js"></script>
+<script src="js/easypiechart.js"></script>
+<script src="js/easypiechart-data.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+>>>>>>> destination
+
+<<<<<<< working copy
+=======
+   
+        <!-- Chart.js -->
+  <script>
+>>>>>>> destination
+	<![CDATA[
+	
+	
+		function ($) {
+			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
+				$(this).find('em:first').toggleClass("glyphicon-minus");	  
+			}); 
+			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
+
+		$(window).on('resize', function () {
+		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		});
+		$(window).on('resize', function () {
+		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+		});
+		
+	
+	]]>
+	</script>	
+	<ui:insert name="script_links" >
+    	
+    	
+    	
+    </ui:insert>
+	
+</h:body>
+</html>
