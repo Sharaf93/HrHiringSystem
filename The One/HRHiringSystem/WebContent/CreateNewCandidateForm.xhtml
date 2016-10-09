@@ -3,7 +3,8 @@
 <html xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:t="http://myfaces.apache.org/tomahawk">
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:hh="http://balusc.net/jsf/html">
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
@@ -96,9 +97,11 @@
 															<f:validateRegex
 																pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
 														</h:inputText>
-													
+
 														<h:message for="EmailCandidate" style="color:orange" />
-														<h:outputText value = "#{pc_CreateNewCandidateForm.emailExistsMsg}" style="color:red"></h:outputText>
+														<h:outputText
+															value="#{pc_CreateNewCandidateForm.emailExistsMsg}"
+															style="color:red"></h:outputText>
 													</div>
 
 													<div
@@ -119,7 +122,9 @@
 
 														<h:message for="MobileNumberCandidate"
 															style="color:orange" />
-															<h:outputText value = "#{pc_CreateNewCandidateForm.numberExistsMsg}" style="color:red"></h:outputText>
+														<h:outputText
+															value="#{pc_CreateNewCandidateForm.numberExistsMsg}"
+															style="color:red"></h:outputText>
 													</div>
 
 													<div
@@ -132,7 +137,7 @@
 															id="PhoneNumberCandidate"
 															value="#{pc_CreateNewCandidateForm.phoneNumber}"
 															validatorMessage="Please Enter Candidate's Phone Number as 11 digits starting with 202">
-														<f:validateLongRange minimum="20200000000"
+															<f:validateLongRange minimum="20200000000"
 																maximum="20299999999"></f:validateLongRange>
 
 														</h:inputText>
@@ -261,6 +266,8 @@
 														class="col-lg-4 col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 														<div class="form-group">
 															<h:outputLabel>Upload CV</h:outputLabel>
+															<input type = "file" value="#{pc_CreateNewCandidateForm.uploadedCV}" required="required" size="60"/>
+										
 
 															<p>
 																<small>Upload Candidates CV in pdf/word Format
@@ -274,7 +281,9 @@
 															<h:commandButton type="submit" value="Create"
 																class="btn btn-primary"
 																action="#{pc_CreateNewCandidateForm.createCandidate}"></h:commandButton>
-															<h:commandButton type ="submit" value="Cancel"  immediate="true" action="#{pc_CreateNewCandidateForm.cancelCreation}"
+															<h:commandButton type="submit" value="Cancel"
+																immediate="true"
+																action="#{pc_CreateNewCandidateForm.cancelCreation}"
 																class="btn btn-warning"></h:commandButton>
 														</div>
 													</div>

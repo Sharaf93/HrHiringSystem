@@ -56,7 +56,9 @@
 								value="#{pc_LoginPageAndRegistrationPage.password}"></h:inputSecret>
 								<h:message for="passwordlogin" style="color:red"></h:message>
 						</div>
+					
 						<div>
+						<h:outputText value = "#{pc_LoginPageAndRegistrationPage.loginMessage}"></h:outputText>
 							<h:commandButton type="submit" value="Login" id="loginbutton"
 								class="btn btn-default submit"
 								action="#{pc_LoginPageAndRegistrationPage.login}"></h:commandButton>
@@ -133,7 +135,6 @@
 							<h:commandButton type="submit" value="Register"
 								id="buttonregister" class="btn btn-default submit"
 								action= "#{pc_LoginPageAndRegistrationPage.Registeration}">
-
 							</h:commandButton>
 						</div>
 

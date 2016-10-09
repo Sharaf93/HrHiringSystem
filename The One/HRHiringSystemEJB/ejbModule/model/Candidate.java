@@ -16,7 +16,8 @@ import java.math.BigDecimal;
 		@NamedQuery(name = "getAllCandidates", query = "SELECT c from Candidate c"),
 		@NamedQuery(name = "getCandidateID", query = "SELECT c.id from Candidate c WHERE c.fullname LIKE :candName"),
 		@NamedQuery(name = "candEmailExists", query = "SELECT c from Candidate c WHERE c.email LIKE :Cemail"),
-		@NamedQuery(name = "candMobileExists", query = "SELECT c from Candidate c WHERE c.mobilenumber LIKE :Cmob")
+		@NamedQuery(name = "candMobileExists", query = "SELECT c from Candidate c WHERE c.mobilenumber LIKE :Cmob"),
+		@NamedQuery(name = "getCandidateByID", query = "SELECT c From Candidate c Where c.id = :cid")
 
 		// @NamedQuery(name="Candidate.getCandidates", query="SELECT c FROM Candidate c"),
 		// @NamedQuery(name="Candidate.getCandidatesModified", 

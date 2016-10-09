@@ -3,23 +3,18 @@ package pagecode;
 
 
 import java.math.BigDecimal;
-
 import java.sql.Timestamp;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
 
+
 import model.Candidate;
-
-
 import ejb.CandidateStatusEJB;
 import ejb.CandidatesEJB;
 import ejb.HRSourcesEJB;
@@ -84,17 +79,6 @@ public class CreateNewCandidateForm extends PageCodeBase{
 	}
     }
 	
-	//CV Upload Method
-	public void uploadCV() {
-		
-		//incomplete 
-	    /*try (InputStream input = uploadedCV.getInputStream()) {
-	        Files.copy(input, new File(pathname).toPath());
-	    }
-	    catch (IOException e) {
-	        // Show faces message?
-	    }*/
-	}
 	
 	public Part getUploadedCV() {
 		return uploadedCV;
@@ -288,7 +272,48 @@ public class CreateNewCandidateForm extends PageCodeBase{
 		this.currentCompany = currentCompany;
 	}
 
+	//upload CV
+	/*public String uploadCV()
+	{
+		System.out.println("herreeee Seifff");
+		File savedFileName;
+		String dirPath = "E:\\CVS\\";
+		InputStream fileContent = null;
+		if (uploadedCV == null) {
+			return null;
+		}
+		try {
+			fileContent = ((Part) uploadedCV).getInputStream();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		String uploadFileName = trimFilePath(((Part) uploadedCV).getName());
+		savedFileName = new File(dirPath + uploadFileName);
+		BufferedOutputStream bos = null;
+		try {
+			bos = new BufferedOutputStream(new FileOutputStream(savedFileName));
+		} catch (FileNotFoundException e) {
+		}
+		byte[] buffer = new byte[1024];
+		int len;
+		try {
+			while ((len = fileContent.read(buffer)) >= 0) {
+				bos.write(buffer, 0, len);
+			}
+		} catch (IOException e) {
+		}
+		try {
+			fileContent.close();
+			bos.close();
+		} catch (IOException e) {
+		}
+		return null;
+	}*/
 	
+/*	public static String trimFilePath(String fileName) {
+		return fileName.substring(fileName.lastIndexOf("/") + 1).substring(
+				fileName.lastIndexOf("\\") + 1);
+	}*/
 
 	//Creating new candidate to persist in database table
 	public String createCandidate() throws Exception
@@ -301,6 +326,8 @@ public class CreateNewCandidateForm extends PageCodeBase{
 		String source = getSource();
 		int yearsOfExp = getYearsOfExperience();;
 		String assignedHR = getAssignedHRSource();
+		Part x = getUploadedCV();
+		System.out.println(x.toString());
 
 		//nullable attributes
 				Long phoneN1 = getPhoneNumber();

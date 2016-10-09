@@ -1,10 +1,13 @@
 package pagecode;
 
+import java.io.IOException;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import ejb.HRSourcesEJB;
 
@@ -18,6 +21,7 @@ public class HeaderAndNavigationBar {
 	@PostConstruct
 	void init()
 	{
+ 
 	String currentU = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("currentuserId").toString();
 	Long currentUID = Long.parseLong(currentU);
 	String userfullname = hrEJB.getHRNameByID(currentUID);
@@ -33,23 +37,28 @@ public class HeaderAndNavigationBar {
 		this.currentUserName = currentUserName;
 	}
 
-	public String logout() {
-		System.out.println("heree in logout");
-	    FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-	    FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentuserId",null);
-		return "success";
+	public String logout() throws IOException {
+		
+		 ((HttpSession) FacesContext.getCurrentInstance().getExternalContext()
+		         .getSession(false)).invalidate();
+		 FacesContext.getCurrentInstance().getExternalContext().redirect("loginpageandregistrationpage.faces");
+	  
+		return null;
 	}
 
-	public String homepageredirect() {
+	public String homepageredirect() throws IOException {
 		String currentuser = FacesContext.getCurrentInstance()
 				.getExternalContext().getSessionMap().get("currentuserId")
 				.toString();
 		Long userId = Long.parseLong(currentuser);
 		String position = hrEJB.getPositionByID(userId);
 		if (position.equals("HR Employee")) {
-			return "successe";
+		FacesContext.getCurrentInstance().getExternalContext().redirect("employeesdashboard.faces");
+			  
+			return null;
 		} else {
-			return "successm";
+			FacesContext.getCurrentInstance().getExternalContext().redirect("managerdashboard.faces");
+			return null;
 		}
 	}
 
