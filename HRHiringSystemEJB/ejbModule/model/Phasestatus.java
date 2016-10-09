@@ -11,23 +11,32 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@Table(name="PHASESTATUS")
-public class Phasestatus implements Serializable {
+@Table(name="PHASESTATUS", schema="HRHSSCHEMA")
+public class PhaseStatus implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="\"ID\"", unique=true, nullable=false)
+	@Column(name="ID", unique=true, nullable=false)
 	private long id;
 
-	@Column(name="\"NAME\"", nullable=false, length=30)
+	@Column(name="NAME", nullable=false, length=30)
 	private String name;
 	
 	//bi-directional many-to-one association to PhasesDetail
 	@OneToMany(mappedBy="phaseStatus")
-	private List<Phasesdetail> phasesDetails;
+	private List<PhasesDetail> phasesDetails;
 
-	public Phasestatus() {
+
+	public List<PhasesDetail> getPhasesDetails() {
+		return phasesDetails;
+	}
+
+	public void setPhasesDetails(List<PhasesDetail> phasesDetails) {
+		this.phasesDetails = phasesDetails;
+	}
+
+	public PhaseStatus() {
 	}
 
 	public long getId() {
@@ -44,14 +53,6 @@ public class Phasestatus implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public List<Phasesdetail> getPhasesDetails() {
-		return phasesDetails;
-	}
-
-	public void setPhasesDetails(List<Phasesdetail> phasesDetails) {
-		this.phasesDetails = phasesDetails;
 	}
 
 }

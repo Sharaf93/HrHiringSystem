@@ -11,22 +11,34 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@NamedQuery(name="Position.getPositions", query="SELECT c FROM Position c")
-@Table(name="POSITIONS")
+@NamedQueries({
+@NamedQuery(name="getAllPositions",query="SELECT c.name from Position c"),
+@NamedQuery(name="getPositionID",query = "SELECT c.id from Position c WHERE c.name LIKE :posName"
+)})
+@Table(name="POSITIONS", schema="HRHSSCHEMA")
 public class Position implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="\"ID\"", unique=true, nullable=false)
+	@Column(name="ID", unique=true, nullable=false)
 	private long id;
 
-	@Column(name="\"NAME\"", nullable=false, length=128)
+	@Column(name="NAME", nullable=false, length=128)
 	private String name;
 	
 	//bi-directional many-to-one association to Candidate
-	@OneToMany(mappedBy="position")
-	private List<Candidate> candidates;
+		@OneToMany(mappedBy="position")
+		private List<Candidate> candidates;
+
+
+	public List<Candidate> getCandidates() {
+			return candidates;
+		}
+
+		public void setCandidates(List<Candidate> candidates) {
+			this.candidates = candidates;
+		}
 
 	public Position() {
 	}
@@ -45,14 +57,6 @@ public class Position implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public List<Candidate> getCandidates() {
-		return candidates;
-	}
-
-	public void setCandidates(List<Candidate> candidates) {
-		this.candidates = candidates;
 	}
 
 }

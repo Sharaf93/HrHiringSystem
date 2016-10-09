@@ -9,34 +9,50 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@Table(name="TESTSDETAILS")
-public class Testsdetail implements Serializable {
+@Table(name="TESTSDETAILS",schema="HRHSSCHEMA")
+public class TestsDetail implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private TestsdetailPK id;
+	private TestsDetailPK id;
 
 	@Column(nullable=false)
 	private int score;
-	
+
 	//bi-directional many-to-one association to Candidate
-	@ManyToOne
-	@JoinColumn( name = "CANDIDATESID")
-	private Candidate candidate;
+		@ManyToOne
+		@JoinColumn( name = "CANDIDATESID")
+		private Candidate candidate;
 
-	//bi-directional many-to-one association to Test
-	@ManyToOne
-	@JoinColumn(name ="TESTSID")
-	private Test test;
+		//bi-directional many-to-one association to Test
+		@ManyToOne
+		@JoinColumn(name ="TESTSID")
+		private Test test;
 
-	public Testsdetail() {
+	public Candidate getCandidate() {
+			return candidate;
+		}
+
+		public void setCandidate(Candidate candidate) {
+			this.candidate = candidate;
+		}
+
+		public Test getTest() {
+			return test;
+		}
+
+		public void setTest(Test test) {
+			this.test = test;
+		}
+
+	public TestsDetail() {
 	}
 
-	public TestsdetailPK getId() {
+	public TestsDetailPK getId() {
 		return this.id;
 	}
 
-	public void setId(TestsdetailPK id) {
+	public void setId(TestsDetailPK id) {
 		this.id = id;
 	}
 
@@ -46,22 +62,6 @@ public class Testsdetail implements Serializable {
 
 	public void setScore(int score) {
 		this.score = score;
-	}
-
-	public Candidate getCandidate() {
-		return candidate;
-	}
-
-	public void setCandidate(Candidate candidate) {
-		this.candidate = candidate;
-	}
-
-	public Test getTest() {
-		return test;
-	}
-
-	public void setTest(Test test) {
-		this.test = test;
 	}
 
 }

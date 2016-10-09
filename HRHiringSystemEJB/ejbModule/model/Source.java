@@ -11,21 +11,33 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@Table(name="\"SOURCE\"")
+@Table(name="SOURCE",schema="HRHSSCHEMA")
+@NamedQueries({
+@NamedQuery(name="getAllSources",query="SELECT s.name from Source s"),
+@NamedQuery(name="getSourceID", query="SELECT s.id from Source s WHERE s.name LIKE :srcName")})
 public class Source implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="\"ID\"", unique=true, nullable=false)
+	@Column(name="ID", unique=true, nullable=false)
 	private long id;
 
-	@Column(name="\"NAME\"", nullable=false, length=128)
+	@Column(name="NAME", nullable=false, length=128)
 	private String name;
 	
 	//bi-directional many-to-one association to Candidate
-	@OneToMany(mappedBy="source")
-	private List<Candidate> candidates;
+		@OneToMany(mappedBy="source")
+		private List<Candidate> candidates;
+
+
+	public List<Candidate> getCandidates() {
+			return candidates;
+		}
+
+		public void setCandidates(List<Candidate> candidates) {
+			this.candidates = candidates;
+		}
 
 	public Source() {
 	}
@@ -44,14 +56,6 @@ public class Source implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public List<Candidate> getCandidates() {
-		return candidates;
-	}
-
-	public void setCandidates(List<Candidate> candidates) {
-		this.candidates = candidates;
 	}
 
 }

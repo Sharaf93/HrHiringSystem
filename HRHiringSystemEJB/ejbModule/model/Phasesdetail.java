@@ -10,12 +10,12 @@ import java.util.Date;
  * 
  */
 @Entity
-@Table(name="PHASESDETAILS")
-public class Phasesdetail implements Serializable {
+@Table(name="PHASESDETAILS",schema="HRHSSCHEMA")
+public class PhasesDetail implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private PhasesdetailPK id;
+	private PhasesDetailPK id;
 
 	@Column(length=1)
 	private String comments;
@@ -29,31 +29,51 @@ public class Phasesdetail implements Serializable {
 	@Column(nullable=false)
 	private long phasestatusid;
 	
-	
 	//bi-directional many-to-one association to Candidate
-	@ManyToOne
-	@JoinColumn( name = "CANDIDATESID")
-	private Candidate candidate;
+		@ManyToOne
+		@JoinColumn( name = "CANDIDATESID")
+		private Candidate candidate;
 
-	//bi-directional many-to-one association to PhaseStatus
-	@ManyToOne
-	@JoinColumn(name ="PHASESTATUSID")
-	private Phasestatus phaseStatus;
+		//bi-directional many-to-one association to PhaseStatus
+		@ManyToOne
+		@JoinColumn(name ="PHASESTATUSID")
+		private PhaseStatus phaseStatus;
 
-	//bi-directional many-to-one association to Phas
-	@ManyToOne
-	@JoinColumn(name ="PHASESID")
-	private Phas phas;
+		//bi-directional many-to-one association to Phas
+		@ManyToOne
+		@JoinColumn(name ="PHASESID")
+		private Phas phas;
 
 	
-	public Phasesdetail() {
-	}
 
-	public PhasesdetailPK getId() {
+	public PhasesDetail() {
+	}
+    
+	public PhaseStatus getPhaseStatus()
+	{
+		return this.phaseStatus;
+	}
+	
+	public void setPhaseStatus(PhaseStatus ps)
+	{
+		this.phaseStatus = ps;
+		
+	}
+	
+	public Phas getPhase()
+	{
+		return this.phas;
+	}
+	
+	public void setPhase(Phas phase)
+	{
+		this.phas = phase;
+	}
+	public PhasesDetailPK getId() {
 		return this.id;
 	}
 
-	public void setId(PhasesdetailPK id) {
+	public void setId(PhasesDetailPK id) {
 		this.id = id;
 	}
 
@@ -87,30 +107,6 @@ public class Phasesdetail implements Serializable {
 
 	public void setPhasestatusid(long phasestatusid) {
 		this.phasestatusid = phasestatusid;
-	}
-
-	public Candidate getCandidate() {
-		return candidate;
-	}
-
-	public void setCandidate(Candidate candidate) {
-		this.candidate = candidate;
-	}
-
-	public Phasestatus getPhaseStatus() {
-		return phaseStatus;
-	}
-
-	public void setPhaseStatus(Phasestatus phaseStatus) {
-		this.phaseStatus = phaseStatus;
-	}
-
-	public Phas getPhas() {
-		return phas;
-	}
-
-	public void setPhas(Phas phas) {
-		this.phas = phas;
 	}
 
 }

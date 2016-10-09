@@ -54,19 +54,6 @@ This may disable custom JSF extensions, such as factories defined in the project
         <enabled>true</enabled>
         <async-supported>false</async-supported>
     </servlet>
-    <servlet>
-    	<description>
-    	JAX-RS Tools Generated - Do not modify</description>
-    	<servlet-name>JAX-RS Servlet</servlet-name>
-    	<servlet-class>com.ibm.websphere.jaxrs.server.IBMRestServlet</servlet-class>
-    	<init-param>
-    		<param-name>javax.ws.rs.Application</param-name>
-    		<param-value>rest.initRest</param-value>
-    	</init-param>
-    	<load-on-startup>1</load-on-startup>
-    	<enabled>true</enabled>
-    	<async-supported>false</async-supported>
-    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.faces</url-pattern>
@@ -74,11 +61,6 @@ This may disable custom JSF extensions, such as factories defined in the project
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-    	<servlet-name>JAX-RS Servlet</servlet-name>
-    	<url-pattern>
-    	/rest/*</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
@@ -88,4 +70,13 @@ This may disable custom JSF extensions, such as factories defined in the project
         <welcome-file>default.htm</welcome-file>
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
+    <resource-ref>
+    	<description />
+
+    	<res-ref-name>DB2DataSource</res-ref-name>
+    	<res-type>javax.sql.DataSource</res-type>
+    	<res-auth>Container</res-auth>
+    	<res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
+    
 </web-app>
