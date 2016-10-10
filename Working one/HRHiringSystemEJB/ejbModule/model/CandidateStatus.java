@@ -27,7 +27,7 @@ public class CandidateStatus implements Serializable {
 	private String status;
 
 	//bi-directional many-to-one association to Candidate
-	@OneToMany(mappedBy="candidatestatus")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="candidatestatus")
 	private List<Candidate> candidates;
 
 	public CandidateStatus() {

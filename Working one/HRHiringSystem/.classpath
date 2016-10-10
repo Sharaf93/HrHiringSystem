@@ -30,6 +30,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/HRHiringSystemEJB"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/HRHiringSystemEJBClient"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>

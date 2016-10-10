@@ -67,8 +67,8 @@ public class RestGraph {
 		
 		
 		//Needs editing in the managerDashboard 
-//		array.add(getJsonReasonsOfFailure(chosenEmployeeID,start,end,position,phase));//4
-//		array.add(getJsonSources(chosenEmployeeID,start,end,position,phase));//5
+		array.add(getJsonReasonsOfFailure(chosenEmployeeID,start,end,"None","None"));//4
+		array.add(getJsonSources(chosenEmployeeID,start,end,"None","None"));//5
 		
 	
 		return Response.status(200).entity(array).build();

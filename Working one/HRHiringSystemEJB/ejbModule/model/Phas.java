@@ -31,11 +31,11 @@ public class Phas implements Serializable {
 	private long phaseorder;
 
 	// bi-directional many-to-one association to PhasesDetail
-	@OneToMany(mappedBy = "phas")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "phas")
 	private List<PhasesDetail> phasesDetails;
 
 	// bi-directional many-to-one association to Candidate
-	@OneToMany(mappedBy = "phase")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "phase")
 	private List<Candidate> candidates;
 
 	public List<PhasesDetail> getPhasesDetails() {
@@ -63,6 +63,14 @@ public class Phas implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<Candidate> getCandidates() {
+		return candidates;
+	}
+
+	public void setCandidates(List<Candidate> candidates) {
+		this.candidates = candidates;
 	}
 
 }

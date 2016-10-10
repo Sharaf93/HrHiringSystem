@@ -24,7 +24,7 @@ public class Test implements Serializable {
 	private String name;
 	
 	//bi-directional many-to-one association to TestsDetail
-	@OneToMany(mappedBy="test")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="test")
 	private List<TestsDetail> testsDetails;
 
 

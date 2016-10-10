@@ -2,6 +2,7 @@ package pagecode;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -67,6 +68,26 @@ public class ManagerDashboard extends PageCodeBase implements Serializable{
 	    setPositionsDropdown(getPositionsString());
 	    setPhasesDropdown(getPhasesString());
 		setEmployeesDropdown(getHrSoures());
+		
+		
+		
+//		Date date = new Date();
+//	    int thisYear = date.getYear();
+//	    Calendar cal = Calendar.getInstance();
+//		cal.set(Calendar.YEAR, thisYear);
+//		cal.set(Calendar.DAY_OF_YEAR, 1);    
+//		Date start = cal.getTime();
+//
+//		//set date to last day of 2014
+//		cal.set(Calendar.YEAR, 2014);
+//		cal.set(Calendar.MONTH, 11); // 11 = december
+//		cal.set(Calendar.DAY_OF_MONTH, 31); // new years eve
+//
+//		Date end = cal.getTime();
+//		
+//		setStartDate(start);
+//		setEndDate(end);
+		
 		
 		Date date = new Date();
 //	    int thisYear = date.getYear();

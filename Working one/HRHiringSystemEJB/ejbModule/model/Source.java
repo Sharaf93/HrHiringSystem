@@ -27,7 +27,7 @@ public class Source implements Serializable {
 	private String name;
 	
 	//bi-directional many-to-one association to Candidate
-		@OneToMany(mappedBy="source")
+		@OneToMany(fetch = FetchType.EAGER, mappedBy="source")
 		private List<Candidate> candidates;
 
 

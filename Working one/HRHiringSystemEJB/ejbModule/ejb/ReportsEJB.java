@@ -174,7 +174,6 @@ public class ReportsEJB {
 		
 		for(int i=0;i<candidates.size();i++){
 			
-			//SHOULD BE: if(candidates.get(i).getStatusId == ReportsConstants.CANDIDATE_STATUS_PASSED_ID)
 			if(candidates.get(i).getStatusid() == ReportsConstants.CANDIDATE_STATUS_PASSED_ID){
 				
 				positionID = (int)candidates.get(i).getPositionsid();
@@ -204,7 +203,6 @@ public class ReportsEJB {
 		
 		for(int i=0;i<candidates.size();i++){
 			
-			//SHOULD BE: if(candidates.get(i).getStatusId == ReportsConstants.CANDIDATE_STATUS_PASSED_ID)
 			if(candidates.get(i).getStatusid() == ReportsConstants.CANDIDATE_STATUS_PASSED_ID){
 				
 				sourceID = (int)candidates.get(i).getSourceid();
@@ -235,7 +233,6 @@ public class ReportsEJB {
 		
 		for(int i=0;i<candidates.size();i++){
 			
-			//SHOULD BE: if(candidates.get(i).getStatusId == ReportsConstants.CANDIDATE_STATUS_FAILED_ID)
 			if(candidates.get(i).getStatusid() == ReportsConstants.CANDIDATE_STATUS_ARCHIVED_ID){
 				
 				sourceID = (int)candidates.get(i).getSourceid();

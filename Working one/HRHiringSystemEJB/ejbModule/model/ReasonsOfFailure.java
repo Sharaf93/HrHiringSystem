@@ -28,7 +28,7 @@ public class ReasonsOfFailure implements Serializable {
 	private String name;
 	
 	//bi-directional many-to-one association to Candidate
-		@OneToMany(mappedBy="reasonsOfFailure")
+		@OneToMany(fetch = FetchType.EAGER, mappedBy="reasonsOfFailure")
 		private List<Candidate> candidates;
 
 	

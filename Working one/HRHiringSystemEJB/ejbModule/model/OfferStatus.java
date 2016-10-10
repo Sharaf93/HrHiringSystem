@@ -28,7 +28,7 @@ public class OfferStatus implements Serializable {
 	private String statusname;
 
 	//bi-directional many-to-one association to Candidate
-	@OneToMany(mappedBy="offerstatus")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="offerstatus")
 	private List<Candidate> candidatesOfferStatus;
 
 	public OfferStatus() {
@@ -48,6 +48,14 @@ public class OfferStatus implements Serializable {
 
 	public void setStatusname(String statusname) {
 		this.statusname = statusname;
+	}
+
+	public List<Candidate> getCandidatesOfferStatus() {
+		return candidatesOfferStatus;
+	}
+
+	public void setCandidatesOfferStatus(List<Candidate> candidatesOfferStatus) {
+		this.candidatesOfferStatus = candidatesOfferStatus;
 	}
 
 }

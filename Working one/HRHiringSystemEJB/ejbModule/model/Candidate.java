@@ -131,11 +131,11 @@ public class Candidate implements Serializable {
 	private OfferStatus offerstatus;
 
 	// bi-directional many-to-one association to PhasesDetail
-	@OneToMany(mappedBy = "candidate", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "candidate", cascade = CascadeType.ALL)
 	private List<PhasesDetail> phasesDetails;
 
 	// bi-directional many-to-one association to TestsDetail
-	@OneToMany(mappedBy = "candidate", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "candidate", cascade = CascadeType.ALL)
 	private List<TestsDetail> testsDetails;
 
 	public Candidate() {

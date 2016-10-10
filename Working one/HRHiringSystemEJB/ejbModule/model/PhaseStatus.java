@@ -24,7 +24,7 @@ public class PhaseStatus implements Serializable {
 	private String name;
 	
 	//bi-directional many-to-one association to PhasesDetail
-	@OneToMany(mappedBy="phaseStatus")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="phaseStatus")
 	private List<PhasesDetail> phasesDetails;
 
 

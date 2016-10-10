@@ -29,7 +29,7 @@ public class Position implements Serializable {
 	private String name;
 	
 	//bi-directional many-to-one association to Candidate
-		@OneToMany(mappedBy="position")
+		@OneToMany(fetch = FetchType.EAGER, mappedBy="position")
 		private List<Candidate> candidates;
 
 
