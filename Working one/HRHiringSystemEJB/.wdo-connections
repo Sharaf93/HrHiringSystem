@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections:connections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:connections="http://www.ibm.com/websphere/wdo/connections">
+  <connection id="HRHSS">
+    <development xsi:type="connections:rsc-live-connection" id="HRHSS_dev" name="HRHSS"/>
+    <runtime xsi:type="connections:datasource-connection" auto-deploy="true" class-location="E:\Fatma Emran - Associate\IMShared\plugins\com.ibm.datatools.db2_2.2.201.v20150413_1924\driver\db2jcc4.jar;E:\Fatma Emran - Associate\IMShared\plugins\com.ibm.datatools.db2_2.2.201.v20150413_1924\driver\db2jcc_license_cisuz.jar" id="HRHSS_runtime" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" database-name="HRHSS" jndi-name="jdbc/HRHSS" port-number="50000" resource-reference-name="HRHSS" server-name="10.0.0.98" sql-vendor-type="-1" userid="Administrator"/>
+  </connection>
+</connections:connections>

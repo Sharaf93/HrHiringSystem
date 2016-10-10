@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg"  xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+<!--<meta h:charset="utf-8"></meta>-->
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<title>HR Hiring System</title>
+<!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />-->
+<link href="css/bootstrap.min.css" rel="stylesheet"></link>
+<link href="css/datepicker3.css" rel="stylesheet"></link>
+<link href="css/styles.css" rel="stylesheet"></link>
+<script src="js/lumino.glyphs.js"></script>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/chart.min.js"></script>
+<script src="js/chart-data.js"></script>
+<script src="js/easypiechart.js"></script>
+<script src="js/easypiechart-data.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+
+</h:head>
+
+<h:body>
+
+<ui:composition>
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 col-xs-12 sidebar">
+		<ul class="nav menu">
+			<li><a href="managerDashboard.faces"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg>Statistics' Dashboard</a></li>
+			<li><a href="CreateNewCandidateForm.faces"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg>Create Candidate</a></li>
+			<li><a href="SearchCandidatesPage.faces" ><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg>Search Candidates</a></li>
+			<!--<li role="presentation" class="divider"></li>-->
+			
+			
+			<li class="parent ">
+				<a href="#">
+					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg>Current Candidates <svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span>
+				</a>
+				
+				<ul class="children collapse" id="sub-item-1">
+					<li><a href="phasesTable.faces">CV Scanning Phase</a></li>
+					<li><a href="phasesTable.faces">Phone Interview Phase</a></li>
+					<li><a href="phasesTable.faces">Tests Phase</a></li>
+					<li><a href="phasesTable.faces">HR Interview Phase</a></li>
+					<li><a href="phasesTable.faces">Technical Interview Phase</a></li>
+					<li><a href="phasesTable.faces">Presentation Phase</a></li>
+				</ul>
+			</li>
+		</ul>
+
+	</div><!--/.sidebar-->
+</ui:composition>
+</h:body>
+</html>

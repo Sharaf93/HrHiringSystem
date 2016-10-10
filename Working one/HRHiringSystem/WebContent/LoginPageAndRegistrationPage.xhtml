@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+	<meta charset="utf-8"></meta>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+	<title>Sumerge Hiring System</title>
+	<link
+		href="resources/gentelella-master/vendors/bootstrap/dist/css/bootstrap.min.css"
+		rel="stylesheet"></link>
+	<link
+		href="resources/gentelella-master/vendors/font-awesome/css/font-awesome.min.css"
+		rel="stylesheet"></link>
+	<link
+		href="resources/gentelella-master/vendors/nprogress/nprogress.css"
+		rel="stylesheet"></link>
+
+	<link
+		href="resources/gentelella-master/vendors/animate.css/animate.min.css"
+		rel="stylesheet"></link>
+	<link href="resources/gentelella-master/build/css/custom.min.css"
+		rel="stylesheet"></link>
+</h:head>
+
+<h:body class="login">
+	<div>
+		<a class="hiddenanchor" id="signup"></a> <a class="hiddenanchor"
+			id="signin"></a>
+
+		<div class="login_wrapper">
+			<div class="animate form login_form">
+				<section class="login_content">
+					<h1>Sumerge Hiring System</h1>
+					<h:form>
+						<h2>Login Here</h2>
+
+						<div>
+							<h:outputLabel>Username : </h:outputLabel>
+							<h:inputText id = "usernamelogin" type="text" class="form-control"
+								placeholder="Username" required="true"
+								requiredMessage="Please Enter username to login"
+								value="#{pc_LoginPageAndRegistrationPage.username}"></h:inputText>
+								<h:message for="usernamelogin" style="color:red"></h:message>
+
+						</div>
+						<div>
+							<h:outputLabel>Password : </h:outputLabel>
+							<h:inputSecret id="passwordlogin" type="password" class="form-control"
+								placeholder="Password" required="true"
+								requiredMessage="Please Enter password to login"
+								value="#{pc_LoginPageAndRegistrationPage.password}"></h:inputSecret>
+								<h:message for="passwordlogin" style="color:red"></h:message>
+						</div>
+					
+						<div>
+						<h:outputText value = "#{pc_LoginPageAndRegistrationPage.loginMessage}"></h:outputText>
+							<h:commandButton type="submit" value="Login" id="loginbutton"
+								class="btn btn-default submit"
+								action="#{pc_LoginPageAndRegistrationPage.login}"></h:commandButton>
+
+
+						</div>
+
+						<div class="clearfix"></div>
+
+						<div class="separator">
+							<p class="change_link">
+								New to site? <a href="#signup" class="to_register"> Create
+									Account </a>
+							</p>
+
+							<div class="clearfix"></div>
+							<br />
+
+							<div>
+								<h1>Sumerge Software Solutions</h1>
+								<p>©2016 All Rights Reserved. Sumerge Software Solutions</p>
+							</div>
+						</div>
+					</h:form>
+				</section>
+			</div>
+
+			<div id="register" class="animate form registration_form">
+				<section class="login_content">
+					<h1>Sumerge Hiring System</h1>
+					<h:form>
+						<h2>Create Account</h2>
+						<div>
+							<h:outputLabel>Name :</h:outputLabel>
+							<h:inputText id ="namereg" type="text" class="form-control" required="true"
+							requiredMessage="Please enter your name"
+							validatorMessage="Name can only contain letters and spaces"
+							value="#{pc_LoginPageAndRegistrationPage.fullName}" >
+						    <f:validateRegex pattern="[A-Za-z ]+" /></h:inputText>
+						    <h:message for="namereg" style="color:red"></h:message>
+						    <BR />
+						</div>
+
+						<div>
+							<h:outputLabel>Username :</h:outputLabel>
+							<h:inputText type="text" class="form-control" required="true" 
+							requiredMessage ="Please Enter username"  id="uncf"
+								value="#{pc_LoginPageAndRegistrationPage.userNameRegisteration}">
+								</h:inputText>
+								<br />
+								<h:message for="uncf" style="color:red"></h:message>
+							<h:outputText id="errorMsg"
+								value="#{pc_LoginPageAndRegistrationPage.usernameExists}" style="color:red"></h:outputText>
+								<br />
+						</div>
+						<div>
+							<h:outputLabel>Password :</h:outputLabel>
+							<h:inputSecret id = "pwreg" type="password" class="form-control"
+								required="true" requiredMessage="Please Enter Password"
+								value="#{pc_LoginPageAndRegistrationPage.passwordRegisteration}" />
+								<h:message for="pwreg" style="color:red"></h:message>
+								<br />
+						</div>
+						<div class="form-group">
+							<h:outputLabel>Position :</h:outputLabel>
+							<h:selectOneMenu
+								value="#{pc_LoginPageAndRegistrationPage.position}"
+								class="form-control" required="true">
+								<f:selectItem itemValue="HR Employee" itemLabel="HR Employee" />
+								<f:selectItem itemValue="HR Manager" itemLabel="HR Manager" />
+							</h:selectOneMenu>
+						</div>
+						<div>
+							<h:commandButton type="submit" value="Register"
+								id="buttonregister" class="btn btn-default submit"
+								action= "#{pc_LoginPageAndRegistrationPage.Registeration}">
+							</h:commandButton>
+						</div>
+
+						<div class="clearfix"></div>
+
+						<div class="separator">
+							<p class="change_link">
+								Already a member ? <a href="#signin" class="to_register">
+									Log in </a>
+							</p>
+
+							<div class="clearfix"></div>
+							<br />
+
+							<div>
+								<h1>
+									<i></i> Sumerge Software Solutions
+								</h1>
+								<p>©2016 All Rights Reserved. Sumerge Software Solutions</p>
+							</div>
+						</div>
+					</h:form>
+				</section>
+			</div>
+			<!-- ************************************** -->
+		</div>
+
+
+	</div>
+
+</h:body>
+</html>
