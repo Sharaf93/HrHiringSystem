@@ -21,7 +21,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
-import model.Hrsource;
+import model.HRSource;
 
 import com.ibm.json.java.JSONArray;
 import com.ibm.json.java.JSONObject;
@@ -96,7 +96,7 @@ public class RestGraph {
 	
 	//Get The Hr Employee ID given the Name
 	public int getHrEmployeeIdByName(String HrName){
-		List<Hrsource> hrSources = hrsourcesEJB.getHrSources();
+		List<HRSource> hrSources = hrsourcesEJB.getHrSources();
 		for(int i=0;i<hrSources.size();i++){
 			if(hrSources.get(i).getName().equals(HrName)){
 				return (int)hrSources.get(i).getId();

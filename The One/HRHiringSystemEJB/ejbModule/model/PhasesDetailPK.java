@@ -8,7 +8,7 @@ import javax.persistence.*;
  * 
  */
 @Embeddable
-public class PhasesdetailPK implements Serializable {
+public class PhasesDetailPK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
@@ -18,7 +18,7 @@ public class PhasesdetailPK implements Serializable {
 	@Column(unique=true, nullable=false)
 	private long phasesid;
 
-	public PhasesdetailPK() {
+	public PhasesDetailPK() {
 	}
 	public long getCandidatesid() {
 		return this.candidatesid;
@@ -37,10 +37,10 @@ public class PhasesdetailPK implements Serializable {
 		if (this == other) {
 			return true;
 		}
-		if (!(other instanceof PhasesdetailPK)) {
+		if (!(other instanceof PhasesDetailPK)) {
 			return false;
 		}
-		PhasesdetailPK castOther = (PhasesdetailPK)other;
+		PhasesDetailPK castOther = (PhasesDetailPK)other;
 		return 
 			(this.candidatesid == castOther.candidatesid)
 			&& (this.phasesid == castOther.phasesid);

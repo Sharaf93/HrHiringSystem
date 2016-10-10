@@ -25,9 +25,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="var" path="JPA_WEB_DEV">
-	<attributes>
-		<attribute name="org.eclipse.jst.component.nondependency" value=""/>
-	</attributes>
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/HRHiringSystemEJB"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>

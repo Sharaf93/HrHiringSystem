@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
-import model.Hrsource;
+import model.HRSource;
 
 
 //import model.controller.HRSourceManager;
@@ -31,7 +31,7 @@ public class HRSourcesEJB implements Serializable{
    }
 	
    @SuppressWarnings("unchecked")
- 	public List<Hrsource> getHrSources() {
+ 	public List<HRSource> getHrSources() {
      	return em.createNamedQuery("Hrsource.getHrsources").getResultList();
      }
      
