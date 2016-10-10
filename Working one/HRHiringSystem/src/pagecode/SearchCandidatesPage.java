@@ -290,7 +290,7 @@ public class SearchCandidatesPage extends PageCodeBase {
 		long id = candidatesEJB.getCandidateIDByName(candidateName);
 		
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("candidateid", id);
-		FacesContext.getCurrentInstance().getExternalContext().redirect("ViewCandidate.faces");
+		FacesContext.getCurrentInstance().getExternalContext().redirect("ViewCandidate.faces?candidateId="+id);
 		return null;
 	}
 	public String EditCandidate() throws IOException
@@ -298,7 +298,7 @@ public class SearchCandidatesPage extends PageCodeBase {
 		String candidateName = getSelectedCandidate();
 		long id = candidatesEJB.getCandidateIDByName(candidateName);
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("candidateid", id);
-		FacesContext.getCurrentInstance().getExternalContext().redirect("ViewCandidate.faces");
+		FacesContext.getCurrentInstance().getExternalContext().redirect("ViewCandidate.faces?candidateId="+id);
 		
 		return null;
 	}
@@ -309,7 +309,7 @@ public class SearchCandidatesPage extends PageCodeBase {
 		String candidateName = getSelectedCandidate();
 		long id = candidatesEJB.getCandidateIDByName(candidateName);
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("candidateid", id);
-		FacesContext.getCurrentInstance().getExternalContext().redirect("ViewCandidate.faces");
+		FacesContext.getCurrentInstance().getExternalContext().redirect("ViewCandidate.faces?candidateId="+id);
 		return null;
 	}
 }
