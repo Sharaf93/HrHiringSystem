@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!-- jsf:pagecode language="java" location="/src/pagecode/TrialWebPage1.java" --><!-- /jsf:pagecode -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>trialWebPage</title>
+	<meta http-equiv="Content-Type"
+		content="application/xhtml+xml; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" title="Style"
+		href="theme/stylesheet.css" />
+</h:head>
+<h:body>
+	<h:form id="form1" styleClass="form">
+		<h:dataTable value="#{ManagedBean.currentCandidatesOfCertainPhase}" border="0" cellpadding="2" cellspacing="0"
+			columnClasses="columnClass1" headerClass="headerClass"
+			footerClass="footerClass" rowClasses="rowClass1, rowClass2"
+			id="table1" styleClass="dataTable">
+			<h:column id="column1">
+				<f:facet name="header">
+					<h:outputText id="text1" styleClass="outputText" value="Column 1"></h:outputText>
+				</f:facet>
+
+				<h:commandLink id="link1" styleClass="commandLink" action="#{ManagedBean.viewAndEditCandidate}" value="la2aaa"></h:commandLink>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+
+</h:body>
+</html>

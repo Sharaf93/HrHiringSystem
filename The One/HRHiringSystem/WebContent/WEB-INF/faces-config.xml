@@ -17,6 +17,45 @@
 		<managed-bean-class>pagecode.ManagerDashboard</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
+
+
+	<managed-bean>
+		<managed-bean-name>pc_Klkl1</managed-bean-name>
+		<managed-bean-class>pagecode.Klkl1</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>pc_klkl</managed-bean-name>
+		<managed-bean-class>
+			pagecode.PhaseTableMangedBean
+		</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>pc_ViewCandidate</managed-bean-name>
+		<managed-bean-class>pagecode.ViewCandidate</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>pc_TestPage</managed-bean-name>
+		<managed-bean-class>pagecode.TestPage</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>pc_PhasesTable</managed-bean-name>
+		<managed-bean-class>pagecode.PhasesTable</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>pc_TrialWebPage</managed-bean-name>
+		<managed-bean-class>pagecode.TrialWebPage</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>pc_TrialWebPage1</managed-bean-name>
+		<managed-bean-class>pagecode.TrialWebPage1</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
 	
 	<managed-bean>
 		<managed-bean-name>pc_CreateNewCandidateForm</managed-bean-name>
@@ -138,11 +177,6 @@
 			<to-view-id>/LoginPageAndRegistrationPage.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-
-
-
-
-
 
 	<navigation-rule>
 	<from-view-id>/managerDashboard.xhtml</from-view-id>

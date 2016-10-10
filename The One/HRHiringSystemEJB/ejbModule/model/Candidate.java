@@ -13,12 +13,20 @@ import java.math.BigDecimal;
  */
 @Entity
 @NamedQueries({
+		//Fatma
 		@NamedQuery(name = "getAllCandidates", query = "SELECT c from Candidate c"),
 		@NamedQuery(name = "getCandidateID", query = "SELECT c.id from Candidate c WHERE c.fullname LIKE :candName"),
 		@NamedQuery(name = "candEmailExists", query = "SELECT c from Candidate c WHERE c.email LIKE :Cemail"),
 		@NamedQuery(name = "candMobileExists", query = "SELECT c from Candidate c WHERE c.mobilenumber LIKE :Cmob"),
-		@NamedQuery(name = "getCandidateByID", query = "SELECT c From Candidate c Where c.id = :cid")
+		@NamedQuery(name = "getCandidateByID", query = "SELECT c From Candidate c Where c.id = :cid"),
 
+		//Baraa
+		@NamedQuery(name="getPendingCandidatesOfCertainPhase", query="SELECT c from Candidate c WHERE c.candidatestatus.status LIKE '%Pend%' AND c.currentphaseid = :id"),
+		@NamedQuery(name="getCandidatesByCurrentPhaseId",query="SELECT c from Candidate c WHERE c."),
+		@NamedQuery(name = "getAllCandidates", query = "SELECT c from Candidate c"),
+		@NamedQuery(name = "getCandidateID", query = "SELECT c.id from Candidate c WHERE c.fullname LIKE :candName")
+
+		//Sharaf
 		// @NamedQuery(name="Candidate.getCandidates", query="SELECT c FROM Candidate c"),
 		// @NamedQuery(name="Candidate.getCandidatesModified", 
 		// query="SELECT c FROM Candidate c WHERE c.hrsourceid = :hr AND c.datecreated BETWEEN :startDate AND :endDate"),

@@ -15,7 +15,8 @@ import java.math.BigDecimal;
 		@NamedQuery(name="getPendingCandidatesOfCertainPhase", query="SELECT c from Candidate c WHERE c.candidatestatus.status LIKE '%Pend%' AND c.currentphaseid = :id"),
 		@NamedQuery(name="getCandidatesByCurrentPhaseId",query="SELECT c from Candidate c WHERE c."),
 		@NamedQuery(name = "getAllCandidates", query = "SELECT c from Candidate c"),
-		@NamedQuery(name = "getCandidateID", query = "SELECT c.id from Candidate c WHERE c.fullname LIKE :candName") })
+		@NamedQuery(name = "getCandidateID", query = "SELECT c.id from Candidate c WHERE c.fullname LIKE :candName") 
+	})
 @Table(name = "CANDIDATES", schema = "HRHSSCHEMA")
 public class Candidate implements Serializable {
 	private static final long serialVersionUID = 1L;

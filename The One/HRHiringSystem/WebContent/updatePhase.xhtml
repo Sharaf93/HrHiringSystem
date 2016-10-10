@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+<title>updatePhase</title>
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=UTF-8" />
+</h:head>
+<h:body>
+
+<ui:repeat value="#{PTMangedBean.ph}" var="kk" >
+				<div class="panel panel-default">
+					<div class="panel-heading">#{kk.phas.name}</div><!-- /.Panel-heading PersonalInfo -->
+						<div class="panel-body">
+							<div class="col-md-6">
+
+								<!--<label> Status : </label>-->
+								<div class="form-group">
+								<label>status: </label> <label>#{kk.phaseStatus.name}</label>
+								</div>
+
+								<!-- TODO : to put Date widget -->
+								<div class="form-group">
+									<label>Date :</label> <label>#{kk.date}</label>
+								</div>
+								<!-- TODO : to put Date widget -->
+								
+								<h:panelGroup layout="block" rendered="#{kk.phas.name eq 'Functional, English and IQ tests'}">
+								<ui:repeat var="ko" value="#{PTMangedBean.testsDetails}">
+									
+									<div class="form-group">
+									<label>#{ko.test.name} Test Score : #{ko.score}</label>
+									</div>
+									
+								</ui:repeat>
+								</h:panelGroup>
+
+								<div class="form-group">
+									<label>Current/Expected Salary :</label> <label>500 L.E</label>
+								</div>
+								
+								<div class="form-group">
+									<label>Reason Of Failure  :</label> <label> kalb</label>
+								</div>
+								
+								<div class="form-group">
+									<label>Comment :</label> <label>#{kk.comment}</label>
+								</div>
+								
+							</div><!-- /. inner col inside the body-->
+						</div><!-- /. panel-body-->
+				
+				</div><!-- / . panel-default-->
+				
+				</ui:repeat>
+
+</h:body>
+</html>

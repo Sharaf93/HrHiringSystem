@@ -1,109 +1,175 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+<!-- jsf:pagecode language="java" location="/src/pagecode/PhasesTable.java" --><!-- /jsf:pagecode -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-<title>Phases Table</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<meta charset="utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<h:outputStylesheet library="css" name="table-style.css" />
+  <title>Phases Table</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <h:outputStylesheet library="css" name="table-style.css" />
+  <link rel="stylesheet" type="text/css" title="Style"
+    href="theme/stylesheet.css" />
 </h:head>
 
 <h:body class="nav-md">
 
-<ui:composition template="/GeneralTemplate.xhtml">
-<ui:define name="title"><title>Phases Table</title></ui:define>
-<ui:define name="content">
+  <ui:composition template="/GeneralTemplate.xhtml">
+    <ui:define name="title">
+      <title>Phases Table</title>
+    </ui:define>
+    <ui:define name="content">
 
-<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-	
-    <div class="container body">
-    	<div class="main_container">
-    	
-	    	<div class="right_col" role="main">
-	         	<div class="">
-	         	
-	         	 <br />
+      <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 
-            <div class="row">
-	
-	
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Candidates Table<small>(Phase)</small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
+        <div class="container body">
+          <div class="main_container">
+
+            <div class="right_col" role="main">
+              <div class="">
+
+                <br />
+
+                <div class="row">
+
+
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                      <div class="x_title">
+                        <h2>
+                          Candidates Table<small>(Phase)</small>
+                        </h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                          <li><a class="collapse-link"><i
+                              class="fa fa-chevron-up"></i></a></li>
+                          <li><a class="close-link"><i class="fa fa-close"></i></a>
+                          </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content">
+
+
+                        <h:form id="form1" styleClass="form">
+                          <h:dataTable id="candidateDataTable"
+                            value="#{ManagedBean.currentCandidatesOfCertainPhase}"
+                            var="o" styleClass="dataTable"
+                            class="table table-striped table-bordered"
+                            headerClass="order-table-header"
+                            rowClasses="order-table-odd-row,order-table-even-row">
+
+
+                            <h:column id="col">
+                              <!-- column header -->
+                              <f:facet name="header">Full Name</f:facet>
+                              <!-- row record -->
+
+
+
+                              <h:commandLink styleClass="commandLink"
+                                action="#{ManagedBean.viewAndEditCandidate}"
+                                value="la2aaaa"></h:commandLink>
+                              <h:commandButton type="submit" value="la2a" id="button1"
+                                styleClass="commandButton"
+                                action="#{ManagedBean.viewAndEditCandidate}"></h:commandButton>
+
+                              <h:commandButton type="submit" value="Submit"
+                                id="button2" styleClass="commandButton" action="#{ManagedBean.viewAndEditCandidate}"></h:commandButton>
+
+                            </h:column>
+
+                            <h:column>
+                              <f:facet name="header">Current/Expected Salary</f:facet>
+            #{o.currentsalary}
+          </h:column>
+
+                            <h:column>
+                              <f:facet name="header">Current Position</f:facet>
+            #{o.currentposition}
+          </h:column>
+
+                            <h:column>
+                              <f:facet name="header">Current Company Name</f:facet>
+            #{o.currentcompanyname}
+          </h:column>
+
+                            <h:column>
+                              <f:facet name="header">Years Of Experience</f:facet>
+            #{o.yearsofexperience}
+          </h:column>
+
+                            <h:column>
+                              <f:facet name="header">Position Applying For</f:facet>
+            #{o.position.name}
+          </h:column>
+
+                            <h:column>
+                              <f:facet name="header">Mobile Number</f:facet>
+            #{o.mobilenumber}
+          </h:column>
+
+                          </h:dataTable>
+                        </h:form>
+
+
+                      </div>
+
+
+
+                    </div>
                   </div>
-                  <div class="x_content">
-                  
-                  <h:dataTable value="#{PTMangedBean.onephaseCandidates}" var="o"
-                  	class="table table-striped table-bordered"
-    				headerClass="order-table-header"
-    				rowClasses="order-table-odd-row,order-table-even-row"
-                  >
 
-    			<h:column>
-    				<!-- column header -->
-    				<f:facet name="header">Full Name</f:facet>
-    				<!-- row record -->
-    				#{o.fullName}
-    			</h:column>
 
-    			<h:column>
-    				<f:facet name="header">Current Position</f:facet>
-    				#{o.currentPosition}
-    			</h:column>
 
-    		</h:dataTable>
-                  
-
-                  </div>
-                  
-                  
-                  
                 </div>
               </div>
-			
-			
-			
-				</div>
-				</div>
-			</div>
-		
-	    </div>
-    </div>
-		
-</div>
-</ui:define>
+            </div>
 
-<ui:define name="script_links">
+          </div>
+        </div>
 
-    <!-- Datatables -->
-    <script src="resources/gentelella-master/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="resources/gentelella-master/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <script src="resources/gentelella-master/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="resources/gentelella-master/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-    <script src="resources/gentelella-master/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-    <script src="resources/gentelella-master/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="resources/gentelella-master/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="resources/gentelella-master/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-    <script src="resources/gentelella-master/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-    <script src="resources/gentelella-master/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="resources/gentelella-master/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-    <script src="resources/gentelella-master/vendors/datatables.net-scroller/js/datatables.scroller.min.js"></script>
-    <script src="resources/gentelella-master/vendors/jszip/dist/jszip.min.js"></script>
-    <script src="resources/gentelella-master/vendors/pdfmake/build/pdfmake.min.js"></script>
-    <script src="resources/gentelella-master/vendors/pdfmake/build/vfs_fonts.js"></script>
+      </div>
+    </ui:define>
 
-    <!-- Datatables -->
-    <script>
+    <ui:define name="script_links">
+
+      <!-- Datatables -->
+      <script
+        src="resources/gentelella-master/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+      <script
+        src="resources/gentelella-master/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+      <script
+        src="resources/gentelella-master/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+      <script
+        src="resources/gentelella-master/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+      <script
+        src="resources/gentelella-master/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+      <script
+        src="resources/gentelella-master/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+      <script
+        src="resources/gentelella-master/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+      <script
+        src="resources/gentelella-master/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+      <script
+        src="resources/gentelella-master/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+      <script
+        src="resources/gentelella-master/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+      <script
+        src="resources/gentelella-master/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+      <script
+        src="resources/gentelella-master/vendors/datatables.net-scroller/js/datatables.scroller.min.js"></script>
+      <script
+        src="resources/gentelella-master/vendors/jszip/dist/jszip.min.js"></script>
+      <script
+        src="resources/gentelella-master/vendors/pdfmake/build/pdfmake.min.js"></script>
+      <script
+        src="resources/gentelella-master/vendors/pdfmake/build/vfs_fonts.js"></script>
+      <!-- Datatables -->
+      <script>
       $(document).ready(function() {
         var handleDataTableButtons = function() {
           if ($("#datatable-buttons").length) {
@@ -182,9 +248,9 @@
         TableManageButtons.init();
       });
     </script>
-    <!-- /Datatables -->
+      <!-- /Datatables -->
 
-</ui:define>
-</ui:composition>
+    </ui:define>
+  </ui:composition>
 </h:body>
 </html>

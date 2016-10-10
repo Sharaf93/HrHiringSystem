@@ -9,6 +9,11 @@ import java.util.Date;
  * The persistent class for the PHASESDETAILS database table.
  * 
  */
+@NamedQueries(
+{
+@NamedQuery(name = "getPhaesDetailsByCandidateId", query="SELECT p from PhasesDetail p where p.id.candidatesid = :id")
+//get the phase details of a certain phase
+})
 @Entity
 @Table(name="PHASESDETAILS",schema="HRHSSCHEMA")
 public class PhasesDetail implements Serializable {
