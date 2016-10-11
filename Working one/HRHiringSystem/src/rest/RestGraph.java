@@ -251,7 +251,7 @@ public class RestGraph {
 	    	array.add(jsonObject);
 	    }
 		
-		 System.out.println(" =========== result: "+array.toString() + "================");
+		 System.out.println(" ======##=== result: "+array.toString() + "================");
 		 
 		return array;	
 	}
@@ -281,7 +281,7 @@ public class RestGraph {
 	    	array.add(jsonObject);
 	    }
 		
-		 System.out.println(" =========== result: "+array.toString() + "================");
+		 System.out.println(" ======##=== result: "+array.toString() + "================");
 		 
 		return array;	
 	}

@@ -71,30 +71,23 @@ public class ManagerDashboard extends PageCodeBase implements Serializable{
 		
 		
 		
-//		Date date = new Date();
-//	    int thisYear = date.getYear();
-//	    Calendar cal = Calendar.getInstance();
-//		cal.set(Calendar.YEAR, thisYear);
-//		cal.set(Calendar.DAY_OF_YEAR, 1);    
-//		Date start = cal.getTime();
-//
-//		//set date to last day of 2014
-//		cal.set(Calendar.YEAR, 2014);
-//		cal.set(Calendar.MONTH, 11); // 11 = december
-//		cal.set(Calendar.DAY_OF_MONTH, 31); // new years eve
-//
-//		Date end = cal.getTime();
-//		
-//		setStartDate(start);
-//		setEndDate(end);
+		int thisYear = Calendar.getInstance().get(Calendar.YEAR);
+	    Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, thisYear);
+		cal.set(Calendar.DAY_OF_YEAR, 1);    
+		Date start = cal.getTime();
+
+		//set date to last day of thisYear
+		cal.set(Calendar.YEAR, thisYear);
+		cal.set(Calendar.MONTH, 11); // 11 = december
+		cal.set(Calendar.DAY_OF_MONTH, 31); // new years eve
+
+		Date end = cal.getTime();
+		
+		setStartDate(start);
+		setEndDate(end);
 		
 		
-		Date date = new Date();
-//	    int thisYear = date.getYear();
-		Date Q1A = new Date("January, 1 2016");
-		Date Q4B = new Date("December, 31 2016");
-		setStartDate(Q1A);
-		setEndDate(Q4B);
 	}	
 	
 	//Get All positions from the database table

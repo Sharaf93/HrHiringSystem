@@ -52,11 +52,11 @@ public class HeaderAndNavigationBar {
 		Long userId = Long.parseLong(currentuser);
 		String position = hrEJB.getPositionByID(userId);
 		if (position.equals("HR Employee")) {
-		FacesContext.getCurrentInstance().getExternalContext().redirect("Dashboard.faces");
+		FacesContext.getCurrentInstance().getExternalContext().redirect("employeesdashboard.faces");
 			  
 			return null;
 		} else {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("Dashboard.faces");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("managerdashboard.faces");
 			return null;
 		}
 	}

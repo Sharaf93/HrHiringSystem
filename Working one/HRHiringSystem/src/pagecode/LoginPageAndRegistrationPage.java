@@ -110,12 +110,12 @@ public class LoginPageAndRegistrationPage extends PageCodeBase{
 		   long currentUserID = hrsource.getId();
 		   FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentuserId", currentUserID);
 		   if(position.equals("HR Employee")){
-			   FacesContext.getCurrentInstance().getExternalContext().redirect("Dashboard.faces");
+			   FacesContext.getCurrentInstance().getExternalContext().redirect("employeesDashboard.faces");
 		  return null;
 		   }
 		   else
 		   {
-			   FacesContext.getCurrentInstance().getExternalContext().redirect("Dashboard.faces");
+			   FacesContext.getCurrentInstance().getExternalContext().redirect("managerDashboard.faces");
 
 			  return null;
 		   }
@@ -139,11 +139,11 @@ public class LoginPageAndRegistrationPage extends PageCodeBase{
 			if(position.equals("HR Employee"))
 			{
 				System.out.println("Employee Login");
-				   FacesContext.getCurrentInstance().getExternalContext().redirect("Dashboard.faces");
+				   FacesContext.getCurrentInstance().getExternalContext().redirect("employeesDashboard.faces");
 					  return null;
 			}else{
 				System.out.println("Manager Login");
-				   FacesContext.getCurrentInstance().getExternalContext().redirect("Dashboard.faces");
+				   FacesContext.getCurrentInstance().getExternalContext().redirect("managerDashboard.faces");
 					  return null;
 			}
 			

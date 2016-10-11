@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.inject.Named;
 import javax.persistence.*;
 
 
@@ -38,7 +39,7 @@ public class HRSource implements Serializable {
 	private String username;
 
 	//bi-directional many-to-one association to Candidate
-		@OneToMany(fetch = FetchType.EAGER, mappedBy="hrsource")
+		@OneToMany(mappedBy="hrsource")
 		private List<Candidate> candidates;
 
 	public List<Candidate> getCandidates() {

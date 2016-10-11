@@ -161,19 +161,21 @@
                        <f:ajax execute="dropdownphase"/>
                        </h:selectOneMenu>
                  </li>
-                 <h:inputText id="buttonPositionPhase" type="button" value ="Submit" readonly="true" class="btn btn-primary" style="width:80px; height:20px;" onclick="return render()"></h:inputText>
+                 <h:inputText id="buttonPositionPhase" type="button" value ="Submit" readonly="true" class="btn btn-primary" style="width:80px; height:20px;" onclick="return renderrs()"></h:inputText>
                  </h:form>
                  
             </ul>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    	<div class="x_content2">
-                    	<!-- <h:panelGroup id="graph_donut" layout="block" style="width:100%; height:300px;"/> -->
-                    		<div id="graph_donut" style=" top:-65px; width:100%; height:450px;"></div>
+                    	<div class="x_content">
+                    	<!-- h:panelGroup id="graph_donut" layout="block" style="top:-65px; width:100%; height:300px;"/-->
+                    	
+                    		<div id="echart_donut2" style="height:450px;"></div>
+                    	
                   		</div>
                   	</div>
                   	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                   		<div class="x_content">
-                    		<div id="echart_pie" style=" top:-65px; width:100%; height:450px;"></div>
+                    		<div id="echart_pie" style="height:450px;"></div>
                   		</div>
                   	</div>
                 </div>
@@ -237,15 +239,11 @@
 <script src="resources/gentelella-master/vendors/jquery.easy-pie-chart/src/jquery.plugin.js"></script>
 <script src="resources/gentelella-master/vendors/jquery.easy-pie-chart/Gruntfile.js"></script>
 
-<script src="resources/gentelella-master/vendors/raphael/raphael.min.js"></script>
-
-<script src="resources/gentelella-master/vendors/morris.js/morris.min.js"></script>
-
 
 
 <!--  Main Function that renders all the graphs based on HrID and Date -->
 <script type="text/javascript">
-function render(){
+function renderrs(){
        var hrId = document.getElementById("dateAndEmployeeForm:dropdownemployee").value;
        var startDate = document.getElementById("dateAndEmployeeForm:startDateHidden").value;
        var endDate = document.getElementById("dateAndEmployeeForm:endDateHidden").value;
@@ -257,19 +255,24 @@ function render(){
 		     crossDomain:true,
 		     contentType: "application/json; charset=utf-8",
 		     dataType: "json",
-		     success: OnSuccess,
-		     error: OnFail
+		     success: OnSuccessed,
+		     error: OnFailed
 		 });
-      	function OnSuccess(data){
+		 }
+		 
+      	function OnSuccessed(data){
 	  	var jsonStringfy = JSON.stringify(data);
 	  	var jsonArray = JSON.parse(jsonStringfy);
 	  	jsonObjectReasonsOfFailure(jsonArray[0]);
 	  	jsonObjectSources(jsonArray[1]);
 	  	
       }      
-      function OnFail(data){
+      function OnFailed(data){
 	    alert("Error: "+data.status);
      }
+     </script>
+     
+     <script>
      
      function resetSources(){
 		facebook=0;
@@ -751,6 +754,7 @@ var endDate;
   
   $(function(){
 	render();
+	renderrs();
     barGraphFailAnalysis();
     pieGraphPendingAnalysis();
     barGraphPassAnalysis();
@@ -759,7 +763,6 @@ var endDate;
     pieChartReasonsOfFailure();
    });
  
-  // Bar chart for Fail Analysis
   var cvFail;
   var phoneFail;
   var examsFail;
@@ -771,7 +774,7 @@ var endDate;
 	  var mybarChart = new Chart(ctx, {
 	    type: 'bar',
 	    data: {
-	      labels: ["CV Screening", "Phone Intrview", "Technical Exams", "HR Interview", "Technical Interview", "Presentation"],
+	      labels: ["CV Screening", "Phone Interview", "Technical Exams", "HR Interview", "Technical Interview", "Presentation"],
 	      datasets: [{
 	        label: '# of Fail',
 	        backgroundColor: "#03586A",
@@ -1112,72 +1115,124 @@ function pieGraphPendingAnalysis(){
 </script>
 <!-- /Chart.js -->            
 <script> 	
-  	
-  $(document).ready(function() {
-
 	//Donut Chart For Sources
-	var irrelevant,outOfCountry,interest,language,culture,communicationSkills,expectedSalary,gender,
-	overqualified,age,attitude,technicalCompetence;
+	var irrelevant=0;
+	var outOfCountry =0;
+	var interest=0;
+	var language=0;
+	var culture =0;
+	var communicationSkills =0;
+	var expectedSalary=0;
+	var gender =0;
+	var overqualified =0;
+	var age =0;
+	var attitude =0;
+	var technicalCompetence =0;
 	function pieChartReasonsOfFailure(){
-    Morris.Donut({
-      element: 'graph_donut',
-      data: [
-        {label: 'Irrelevant Experience', value: irrelevant},
-        {label: 'Out of the Country', value: outOfCountry},
-        {label: 'Interest', value: interest},
-        {label: 'Language', value: language},
-        {label: 'Culture', value: culture},
-        {label: 'Communication skills', value: communicationSkills},
-        {label: 'Expected salary', value: expectedSalary},
-        {label: 'Gender', value: gender},
-        {label: 'Overqualified', value: overqualified},
-        {label: 'Age', value: age},
-        {label: 'Attitude', value: attitude},
-        {label: 'Technical competence', value: technicalCompetence}
-      ],
-      colors: ['#26B99A', '#34495E', '#759c6a', '#ff98DB', '#BDFFC7', '#9B59B6', '#8abb6f', 
-      '#ACADAC','#3498DB', '#9B5900', '#8a006f', '#00ADAC','#ff98DB'],
-      formatter: function (y) {
-        return y + "%";
-      },
-      resize: true
-    });
-    
-
-    $MENU_TOGGLE.on('click', function() {
-      $(window).resize();
-    });
+	var echartDonut2 = echarts.init(document.getElementById('echart_donut2'), theme);
+     echartDonut2.setOption({
+       tooltip: {
+         trigger: 'item',
+         formatter: "{a} <br/>{b} : {c} ({d}%)"
+       },
+       calculable: true,
+       legend: {
+         x: 'center',
+         y: 'bottom',
+         data: ['Irrelevant Experience', 'Out of the Country', 'Interest', 'Language', 'Culture', 'Communication skills',
+         'Expected salary', 'Gender','Overqualified','Age','Attitude','Technical competence']
+       },
+       toolbox: {
+         show: true,
+         feature: {
+           magicType: {
+             show: true,
+             type: ['pie', 'funnel'],
+             option: {
+               funnel: {
+                 x: '25%',
+                 width: '50%',
+                 funnelAlign: 'center',
+                 max: 1548
+               }
+             }
+           },
+           restore: {
+             show: true,
+             title: "Restore"
+           },
+           saveAsImage: {
+             show: true,
+             title: "Save Image"
+           }
+         }
+       },
+       series: [{
+         name: 'Access to the resource',
+         type: 'pie',
+         radius: ['35%', '55%'],
+         itemStyle: {
+           normal: {
+             label: {
+               show: true
+             },
+             labelLine: {
+               show: true
+             }
+           },
+           emphasis: {
+             label: {
+               show: true,
+               position: 'center',
+               textStyle: {
+                 fontSize: '14',
+                 fontWeight: 'normal'
+               }
+             }
+           }
+         },
+         data: [{         
+           value: irrelevant,
+           name: 'Irrelevant Experience'
+         }, {
+           value: outOfCountry,
+           name: 'Out of the Country'
+         }, {
+           value: interest,
+           name: 'Interest'
+         }, {
+           value: language,
+           name: 'Language'
+         }, {
+           value: culture,
+           name: 'Culture'
+         }, {
+         	value: communicationSkills,
+         	name: 'Communication skills'
+         }, {
+         	value: expectedSalary,
+         	name: 'Expected salary'
+         }, {
+         	value: gender,
+         	name: 'Gender'
+         }, {
+         	value: overqualified,
+         	name: 'Overqualified'
+         }, {
+         	value: age,
+         	name: 'Age'
+         }, {
+         	value: attitude,
+         	name: 'Attitude'
+         }, {
+         	value: technicalCompetence,
+         	name: 'Technical competence'
+         }]
+       }]
+     });  
 	}
-  });
+  </script>
   
-  
-   $(document).ready(function() {
-
-    Morris.Donut({
-      element: 'graph_donut2',
-      data: [
-        {label: 'Facebook', value: 25},
-        {label: 'Wuzzuf', value: 40},
-        {label: 'Referral', value: 25},
-        {label: 'Linkedin', value: 10},
-        {label: 'GUC- Employment fair', value: 35},
-        {label: 'MSA- Employment fair', value: 5},
-        {label: 'Company- website', value: 12},
-        {label: 'American Chamber', value: 20},
-        {label: 'SCAD GUC', value: 65}
-      ],
-      colors: ['#26B99A', '#34495E', '#759c6a', '#3498DB', '#BDFFC7', '#9B59B6', '#8abb6f', '#ACADAC','#ff98DB'],
-      formatter: function (y) {
-        return y + "%";
-      },
-      resize: true
-    });
-
-    $MENU_TOGGLE.on('click', function() {
-      $(window).resize();
-    });
-  });
-</script>
 	
 <script>
  var theme = {

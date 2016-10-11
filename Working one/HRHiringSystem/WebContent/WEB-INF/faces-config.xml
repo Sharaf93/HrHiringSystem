@@ -13,7 +13,7 @@
 
 	<managed-bean>
 		<managed-bean-name>pc_managerDashboard</managed-bean-name>
-		<managed-bean-class>pagecode.Dashboard</managed-bean-class>
+		<managed-bean-class>pagecode.ManagerDashboard</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 
