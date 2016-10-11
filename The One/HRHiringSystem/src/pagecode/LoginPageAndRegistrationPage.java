@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
@@ -23,8 +24,23 @@ public class LoginPageAndRegistrationPage extends PageCodeBase{
 	private String userNameRegisteration;
 	private String passwordRegisteration;
 	private String usernameExists;
+	private String loginMessage;
 	@EJB
 	private HRSourcesEJB hrSourceEJB;
+	
+	@PostConstruct
+	void init()
+	{
+		try
+		{
+			String message = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("unexist").toString();
+			setUsernameExists(message);
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("unexist", "");
+		}catch(NullPointerException e)
+		{
+			
+		}
+	}
 	public String getPasswordRegisteration() {
 		return passwordRegisteration;
 	}
@@ -71,8 +87,15 @@ public class LoginPageAndRegistrationPage extends PageCodeBase{
 	public void setUsernameExists(String usernameExists) {
 		this.usernameExists = usernameExists;
 	}
+	public String getLoginMessage() {
+		return loginMessage;
+	}
+	public void setLoginMessage(String loginMessage) {
+		this.loginMessage = loginMessage;
+	}
 	public String Registeration () throws IOException
 	{
+		System.out.println("hereee ***********");
 		String usern = getUserNameRegisteration();
 		String pass = getPasswordRegisteration();
 		String fulln = getFullName();
@@ -83,7 +106,8 @@ public class LoginPageAndRegistrationPage extends PageCodeBase{
 			String message = "Username: " + usern + " already exists";
 			setUsernameExists(message);
 			setUserNameRegisteration("");
-		   // FacesContext.getCurrentInstance().getExternalContext().redirect("LoginPageAndRegistrationPage.faces#signup");
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("unexist", message);
+		    FacesContext.getCurrentInstance().getExternalContext().redirect("LoginPageAndRegistrationPage.faces#signup");
 			return null;
 		}else{
 		   HRSource hrsource = new HRSource();
@@ -99,12 +123,14 @@ public class LoginPageAndRegistrationPage extends PageCodeBase{
 		   long currentUserID = hrsource.getId();
 		   FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentuserId", currentUserID);
 		   if(position.equals("HR Employee")){
-		  return "successe";
+			   FacesContext.getCurrentInstance().getExternalContext().redirect("employeesDashboard.faces");
+		  return null;
 		   }
 		   else
 		   {
+			   FacesContext.getCurrentInstance().getExternalContext().redirect("managerDashboard.faces");
 
-			  return "successm";
+			  return null;
 		   }
 		   
 		}
@@ -125,13 +151,16 @@ public class LoginPageAndRegistrationPage extends PageCodeBase{
 			FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 			if(position.equals("HR Employee"))
 			{
-				return "successe";
+				   FacesContext.getCurrentInstance().getExternalContext().redirect("employeesDashboard.faces");
+					  return null;
 			}else{
-			return "successm";
+				   FacesContext.getCurrentInstance().getExternalContext().redirect("managerDashboard.faces");
+					  return null;
 			}
 			
 		}
 		else{			
+			setLoginMessage("Incorrect Username or Password. Please Try Again !");
 			return null;
 		}
 			

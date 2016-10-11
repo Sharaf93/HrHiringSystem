@@ -3,10 +3,7 @@ package pagecode;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -15,14 +12,10 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.event.ValueChangeEvent;
 
 import model.Candidate;
-import model.Hrsource;
+import model.HRSource;
 import model.Phas;
 import model.Position;
 
-import com.ibm.json.java.JSONArray;
-import com.ibm.json.java.JSONObject;
-
-import dto.ReportsDTO;
 import ejb.CandidatesEJB;
 import ejb.HRSourcesEJB;
 import ejb.PhasesEJB;
@@ -30,6 +23,7 @@ import ejb.PositionsEJB;
 import ejb.ReportsEJB;
 
 
+@SuppressWarnings("serial")
 @ManagedBean(name = "managerdashboard")
 @SessionScoped
 public class ManagerDashboard extends PageCodeBase implements Serializable{
@@ -102,7 +96,7 @@ public class ManagerDashboard extends PageCodeBase implements Serializable{
 	
 	//Get All HR sources in a list of strings
 	public List<String> getHrSoures(){
-		List<Hrsource> hrsources = new ArrayList<Hrsource>();
+		List<HRSource> hrsources = new ArrayList<HRSource>();
 		List<String> hrsourcesString = new ArrayList<String>();
 		hrsources = hrsourcesEJB.getHrSources();
 		hrsourcesString.add(0,"None");
@@ -119,7 +113,7 @@ public class ManagerDashboard extends PageCodeBase implements Serializable{
 	
 	//Get The Hr Employee ID given the Name
 	public int getHrEmployeeIdByName(String HrName){
-		List<Hrsource> hrSources = hrsourcesEJB.getHrSources();
+		List<HRSource> hrSources = hrsourcesEJB.getHrSources();
 		for(int i=0;i<hrSources.size();i++){
 			if(hrSources.get(i).getName().equals(HrName)){
 				return (int)hrSources.get(i).getId();
@@ -200,7 +194,7 @@ public class ManagerDashboard extends PageCodeBase implements Serializable{
 	}
 
 	public void setChosenPosition(String chosenPosition) {
-		this.chosenPosition = chosenPosition;
+		ManagerDashboard.chosenPosition = chosenPosition;
 	}
 
 	public List<String> getPhasesDropdown() {
@@ -216,7 +210,7 @@ public class ManagerDashboard extends PageCodeBase implements Serializable{
 	}
 
 	public void setChosenPhase(String chosenPhase) {
-		this.chosenPhase = chosenPhase;
+		ManagerDashboard.chosenPhase = chosenPhase;
 	}
 
 	public List<String> getPositionsDropdown() {

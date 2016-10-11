@@ -113,11 +113,11 @@ public class CandidatesEJB  implements Serializable{
       }
 
 
-    @SuppressWarnings("unchecked")
-    public List<Candidate> searchCandidates(String searchQuery)
+   @SuppressWarnings("unchecked")
+	public List<Candidate> searchCandidates(String searchQuery)
     {
-      
-      return em.createNativeQuery(searchQuery).getResultList();
+    	
+    	return em.createNativeQuery(searchQuery, Candidate.class).getResultList();
     }
 
 
@@ -141,6 +141,10 @@ public class CandidatesEJB  implements Serializable{
       }
       return true;
   }
+  public Candidate getCandidatebyID(long id) {
+	// TODO Auto-generated method stub
+	return (Candidate)em.createNamedQuery("getCandidateByID").setParameter("cid", id).getSingleResult();
+}
   	
   }
 

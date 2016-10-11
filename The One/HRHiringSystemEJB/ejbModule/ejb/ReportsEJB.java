@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
 
 import model.Candidate;
 import model.Phas;
-import model.Phasesdetail;
+import model.PhasesDetail;
 import model.Position;
 
 import dto.ReportsDTO;
@@ -112,16 +112,16 @@ public class ReportsEJB {
 		int phaseID;
 		
 		for(int i=0;i<candidates.size();i++){
-			List<Phasesdetail> phaseDetails = candidates.get(i).getPhasesDetails();
+			List<PhasesDetail> phaseDetails = candidates.get(i).getPhasesDetails();
 			for(int j=0;j<phaseDetails.size();j++){
 				if(phaseDetails.get(j).getPhaseStatus().getId() == ReportsConstants.PHASE_FAILED_ID){
-					phaseID = (int)phaseDetails.get(j).getPhas().getId();
+					phaseID = (int)phaseDetails.get(j).getPhase().getId();
 					if(phases.containsKey(phaseID)){
 						ReportsDTO phaseDTO = phases.get(phaseID);
 						phaseDTO.setCount(phaseDTO.getCount()+1);
 					}
 					else{
-						String phaseName = phaseDetails.get(j).getPhas().getName();
+						String phaseName = phaseDetails.get(j).getPhase().getName();
 						ReportsDTO phaseDTO = new ReportsDTO(phaseID, phaseName, 1);
 						phases.put(phaseID, phaseDTO);
 					}
@@ -140,16 +140,16 @@ public class ReportsEJB {
 		int phaseID;
 		
 		for(int i=0;i<candidates.size();i++){
-			List<Phasesdetail> phaseDetails = candidates.get(i).getPhasesDetails();
+			List<PhasesDetail> phaseDetails = candidates.get(i).getPhasesDetails();
 			for(int j=0;j<phaseDetails.size();j++){
 				if(phaseDetails.get(j).getPhaseStatus().getId() == ReportsConstants.PHASE_PENDING_ID){
-					phaseID = (int)phaseDetails.get(j).getPhas().getId();
+					phaseID = (int)phaseDetails.get(j).getPhase().getId();
 					if(phases.containsKey(phaseID)){
 						ReportsDTO phaseDTO = phases.get(phaseID);
 						phaseDTO.setCount(phaseDTO.getCount()+1);
 					}
 					else{
-						String phaseName = phaseDetails.get(j).getPhas().getName();
+						String phaseName = phaseDetails.get(j).getPhase().getName();
 						ReportsDTO phaseDTO = new ReportsDTO(phaseID, phaseName, 1);
 						phases.put(phaseID, phaseDTO);
 					}
@@ -176,7 +176,7 @@ public class ReportsEJB {
 		for(int i=0;i<candidates.size();i++){
 			
 			//SHOULD BE: if(candidates.get(i).getStatusId == ReportsConstants.CANDIDATE_STATUS_PASSED_ID)
-			if(candidates.get(i).getStatus().equals("Passed")){
+			if(candidates.get(i).getStatusid() == ReportsConstants.CANDIDATE_STATUS_PASSED_ID){
 				
 				positionID = (int)candidates.get(i).getPositionsid();
 				
@@ -206,7 +206,7 @@ public class ReportsEJB {
 		for(int i=0;i<candidates.size();i++){
 			
 			//SHOULD BE: if(candidates.get(i).getStatusId == ReportsConstants.CANDIDATE_STATUS_PASSED_ID)
-			if(candidates.get(i).getStatus().equals("Passed")){
+			if(candidates.get(i).getStatusid() == ReportsConstants.CANDIDATE_STATUS_PASSED_ID){
 				
 				sourceID = (int)candidates.get(i).getSourceid();
 				
@@ -237,7 +237,7 @@ public class ReportsEJB {
 		for(int i=0;i<candidates.size();i++){
 			
 			//SHOULD BE: if(candidates.get(i).getStatusId == ReportsConstants.CANDIDATE_STATUS_FAILED_ID)
-			if(candidates.get(i).getStatus().equals("Failed")){
+			if(candidates.get(i).getStatusid() == ReportsConstants.CANDIDATE_STATUS_ARCHIVED_ID){
 				
 				sourceID = (int)candidates.get(i).getSourceid();
 				

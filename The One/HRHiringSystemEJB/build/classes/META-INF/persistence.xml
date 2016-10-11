@@ -2,17 +2,19 @@
 	<persistence-unit name="HRHiringSystemEJB" transaction-type="JTA">
 	<jta-data-source>jdbc/HRHS</jta-data-source>
 	<class>model.Candidate</class>
-	<class>model.Hrsource</class>
+	<class>model.HRSource</class>
+	<class>model.PhaseStatus</class>
 	<class>model.Phas</class>
-	<class>model.Phasesdetail</class>
-	<class>model.PhasesdetailPK</class>
-	<class>model.Phasestatus</class>
 	<class>model.Position</class>
-	<class>model.Reasonsoffailure</class>
+	<class>model.ReasonsOfFailure</class>
 	<class>model.Source</class>
 	<class>model.Test</class>
-	<class>model.Testsdetail</class>
-	<class>model.TestsdetailPK</class>
+	<class>model.TestsDetail</class>
+	<class>model.TestsDetailPK</class>
+	<class>model.PhasesDetail</class>
+	<class>model.PhasesDetailPK</class>
+	<class>model.CandidateStatus</class>
+	<class>model.OfferStatus</class>
 	<properties>
 	<property name="openjpa.jdbc.Schema" value="HRHSSCHEMA"/>
 	<property name="openjpa.ConnectionFactoryProperties" value="PrintParameters=true" />

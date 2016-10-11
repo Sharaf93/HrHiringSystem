@@ -1,5 +1,6 @@
 package pagecode;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -192,12 +193,14 @@ public class SearchCandidatesPage extends PageCodeBase {
 	public String searchCandidates() {
 		
 		String fN = getFullName().toLowerCase();
+		System.out.println("The full name written" + fN);
 		String eM = getEmail().toLowerCase();
 		String aHR = getAssignedHR();
 		String statname = getStatus();
 		String pAF = getPositionAppliedFor();
 		long nM = getNumber();
 		String sPhase = getSelectedPhase();
+		List<Candidate> search1 = new ArrayList<Candidate>();
 		if (fN.equals("") && eM.equals("") && aHR.equals("None")
 				&& statname.equals("None") && pAF.equals("None") && nM == 0
 				&& sPhase.equals("None")) {
@@ -255,14 +258,16 @@ public class SearchCandidatesPage extends PageCodeBase {
 				String finalQuery = searchQuery.substring(0,
 						searchQuery.length() - 5);
 				searchResultCandidates = new ArrayList<Candidate>();
-				searchResultCandidates = candidatesEJB
+				search1 = candidatesEJB
 						.searchCandidates(finalQuery);
 				resultSize = searchResultCandidates.size();
+				System.out.println("here ahuu " + resultSize);
 			} else {
-				searchResultCandidates = candidatesEJB
+				search1 = candidatesEJB
 						.searchCandidates(searchQuery);
 				resultSize = searchResultCandidates.size();
 
+				System.out.println("here ahuu " + resultSize);
 			}
 			if (resultSize == 0) {
 				setResponseMessage("No Results Found");
@@ -270,6 +275,11 @@ public class SearchCandidatesPage extends PageCodeBase {
 			}
 
 			}
+		    for(int i = 0; i < search1.size();i++)
+		    {
+		    	Candidate x = candidatesEJB.getCandidatebyID(search1.get(i).getId());
+		    	searchResultCandidates.add(x);
+		    }
 			setFullName("");
 			setAssignedHR("None");
 			setEmail("");
@@ -277,33 +287,36 @@ public class SearchCandidatesPage extends PageCodeBase {
 			setPositionAppliedFor("None");
 			setStatus("None");
 			setSelectedPhase("None");
-			return null;
+			return "searchcandidatespage.faces";
 		}
-	public String ViewCandidate()
+	public String ViewCandidate() throws IOException
 	{
 		String candidateName = getSelectedCandidate();
 		System.out.println("The Selected Candidate is : " + candidateName);
 		long id = candidatesEJB.getCandidateIDByName(candidateName);
 		
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("candidateid", id);
-		return "success";
+		FacesContext.getCurrentInstance().getExternalContext().redirect("ViewCandidate.faces");
+		return null;
 	}
-	public String EditCandidate()
+	public String EditCandidate() throws IOException
 	{
 		String candidateName = getSelectedCandidate();
 		long id = candidatesEJB.getCandidateIDByName(candidateName);
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("candidateid", id);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("ViewCandidate.faces");
 		
-		return "success";
+		return null;
 	}
 	
 	
-	public String UpdateCandidate()
+	public String UpdateCandidate() throws IOException
 	{
 		String candidateName = getSelectedCandidate();
 		long id = candidatesEJB.getCandidateIDByName(candidateName);
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("candidateid", id);
-		return "success";
+		FacesContext.getCurrentInstance().getExternalContext().redirect("ViewCandidate.faces");
+		return null;
 	}
 }
 
