@@ -54,7 +54,43 @@ public class HRHSManagedBean extends PageCodeBase implements Serializable {
 									// Candidate and Edit Candidate pages
 	String test;
 	String reasonOfFailure;
-
+	
+	
+	//SHARAF-Start
+	private boolean candidateUpdateFlag;
+//	@EJB
+//	private CandidatesEJB candidatesEJB;
+	
+	//Get All candidates from the database table
+//	public List<Candidate> getCandidates(){
+//		List<Candidate> candidates = new ArrayList<Candidate>();
+//		candidates = candidatesEJB.getCanditates();
+//		return candidates;
+//	}
+	public boolean isCandidateUpdateFlag() {
+		return candidateUpdateFlag;
+	}
+	public void setCandidateUpdateFlag(boolean candidateUpdateFlag) {
+		this.candidateUpdateFlag = candidateUpdateFlag;
+	}
+	public void getUpdateStatus(){
+		candidateUpdateFlag = false;
+		Map<String, String> params;
+		 params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		String candidateIdParam = params.get("candidateId");
+		int candidateId = Integer.parseInt(candidateIdParam);
+//		List<Candidate> candidates = getCandidates();
+//		for(int i=0;i<candidates.size();i++){
+//			if(candidates.get(i).getID() == candidateId){
+//				if(candidate.get(i).getStatusID != ReportsConstants.CANDIDATE_STATUS_PENDING_ID){
+//					setCandidateUpdateFlag(true);
+//					return;
+//				}
+//			}
+//		}
+	}
+	//SHARAF-End
+	
 	public String getReasonOfFailure() {
 		return reasonOfFailure;
 	}
@@ -196,6 +232,7 @@ public class HRHSManagedBean extends PageCodeBase implements Serializable {
 
 	public List<Candidate> getCurrentCandidatesOfCertainPhase() {
 		if (currentCandidatesOfCertainPhase == null) {
+			getUpdateStatus();
 			// Long candidateId;
 			Long currentPhaseId;
 			String paramValue;
