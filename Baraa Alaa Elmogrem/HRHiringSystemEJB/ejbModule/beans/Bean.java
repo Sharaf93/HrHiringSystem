@@ -62,10 +62,12 @@ public class Bean {
     	return query.getResultList();
     }
     
-    public Candidate getOneCandidate(long candidateId) 
+    public Candidate getOneCandidate(Long candidateId) 
     {
-    	Query query = em.createQuery("SELECT c from Candidate c WHERE c.id = :id");
+    	Query query = em.createNamedQuery("getCertainCandidate");
     	query.setParameter("id", candidateId);
+    	System.out.println("candidateID inside elbean = " + Long.toString(candidateId));
+    	System.out.println("candidateObj gowwa elbean = " + (Candidate) query.getSingleResult());
     	return (Candidate) query.getSingleResult();
     }
     

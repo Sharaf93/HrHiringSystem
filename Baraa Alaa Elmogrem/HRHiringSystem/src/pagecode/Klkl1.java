@@ -51,6 +51,8 @@ public class Klkl1 extends PageCodeBase {
 	protected HtmlOutputText text1;
 	protected HtmlDataTable table1;
 	protected HtmlCommandLink link2;
+	protected HtmlInputText text2;
+	protected HtmlCommandButton button2;
 	public String hoba()
 	{
 		//System.out.println(mybean.getAllPhasesNames("CV Screening").toString());
@@ -160,6 +162,18 @@ public class Klkl1 extends PageCodeBase {
 			link2 = (HtmlCommandLink) findComponentInRoot("link2");
 		}
 		return link2;
+	}
+	protected HtmlInputText getText2() {
+		if (text2 == null) {
+			text2 = (HtmlInputText) findComponentInRoot("text2");
+		}
+		return text2;
+	}
+	protected HtmlCommandButton getButton2() {
+		if (button2 == null) {
+			button2 = (HtmlCommandButton) findComponentInRoot("button2");
+		}
+		return button2;
 	}
 
 }

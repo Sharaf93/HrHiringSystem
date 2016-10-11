@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Entity
 @NamedQueries({
 		@NamedQuery(name="getPendingCandidatesOfCertainPhase", query="SELECT c from Candidate c WHERE c.candidatestatus.status LIKE '%Pend%' AND c.currentphaseid = :id"),
-		@NamedQuery(name="getCandidatesByCurrentPhaseId",query="SELECT c from Candidate c WHERE c."),
+		@NamedQuery(name="getCertainCandidate",query="SELECT c from Candidate c WHERE c.id = :id"),
 		@NamedQuery(name = "getAllCandidates", query = "SELECT c from Candidate c"),
 		@NamedQuery(name = "getCandidateID", query = "SELECT c.id from Candidate c WHERE c.fullname LIKE :candName") })
 @Table(name = "CANDIDATES", schema = "HRHSSCHEMA")
@@ -224,6 +224,8 @@ public class Candidate implements Serializable {
 	}
 
 	public void setFullname(String fullname) {
+		
+		System.out.println("set full nameeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 		this.fullname = fullname;
 	}
 

@@ -65,12 +65,12 @@ public class PhasesDetail implements Serializable {
 		
 	}
 	
-	public Phas getPhase()
+	public Phas getPhas()
 	{
 		return this.phas;
 	}
 	
-	public void setPhase(Phas phase)
+	public void setPhas(Phas phase)
 	{
 		this.phas = phase;
 	}

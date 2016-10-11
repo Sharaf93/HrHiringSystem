@@ -76,6 +76,10 @@ public class HRHSManagedBean extends PageCodeBase implements Serializable {
 	}
 
 	public List<String> getReasonsOfFailure() {
+		if (reasonsOfFailure == null)
+		{
+			reasonsOfFailure = mybean.getAllReasonsOfFailure();
+		}
 		return reasonsOfFailure;
 	}
 
@@ -100,7 +104,16 @@ public class HRHSManagedBean extends PageCodeBase implements Serializable {
 	public List<PhasesDetail> getPhaseDetailsByCandidateIdList() {
 		if ( phaseDetailsByCandidateIdList == null)
 		{
-			phaseDetailsByCandidateIdList = new ArrayList<PhasesDetail>();
+			Long candidateId;
+			String paramValue;
+			Map<String,String> params;
+	        params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+	        paramValue = params.get("candidateId");
+	        candidateId = Long.valueOf(paramValue);
+	        System.out.println("candidateId in phasedetails = " + Long.toString(candidateId));
+	        phaseDetailsByCandidateIdList = mybean.getPhaesDetailsByCandidateId(candidateId);
+	        
+	        System.out.println("size = " + phaseDetailsByCandidateIdList.size());
 		}
 		return phaseDetailsByCandidateIdList;
 	}
@@ -125,16 +138,36 @@ public class HRHSManagedBean extends PageCodeBase implements Serializable {
 	public Candidate getCandidateToBeViewed() {
 		if(candidateToBeViewed == null)
 		{
-			candidateToBeViewed = mybean.getOneCandidate(2);	
+			Long candidateId;
+			String paramValue;
+			Map<String,String> params;
+	        params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+	        paramValue = params.get("candidateId");
+	        System.out.println("paramValue = " + paramValue);
+	        candidateId = Long.valueOf(paramValue);
+	        System.out.println("long = " + Long.toString(candidateId) );
+	        candidateToBeViewed = mybean.getOneCandidate(candidateId);
 		}
 		return candidateToBeViewed;
 	}
 
 	public void setCandidateToBeViewed(Candidate candidateToBeViewed) {
+		System.out.println("da5let elseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeet");
 		this.candidateToBeViewed = candidateToBeViewed;
 	}
 
 	public List<Candidate> getCurrentCandidatesOfCertainPhase() {
+		if (currentCandidatesOfCertainPhase == null)
+		{
+			Long currentPhaseId;
+			String paramValue;
+			Map<String,String> params;
+	        params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+	        paramValue = params.get("currentPhaseId");
+	        currentPhaseId = Long.valueOf(paramValue);
+	        currentCandidatesOfCertainPhase = mybean.getPendingCandidatesOfCertainPhase(currentPhaseId);
+		}
+		
 		return currentCandidatesOfCertainPhase;
 	}
 
@@ -202,18 +235,27 @@ public class HRHSManagedBean extends PageCodeBase implements Serializable {
 	public String viewAndEditCandidate()
 	{
 		System.out.println("visited viewAndEditCandidaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaate function");
+//		
 		Long candidateId;
 		String paramValue;
-		String whichPageToView;
 		Map<String,String> params;
         params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        paramValue = params.get("phaseName");
+        candidateId = Long.valueOf(paramValue);
+		
+		return "/EditCandidate.xhtml?faces-redirect=true&candidateId=" + Long.toString(candidateId);
+		//Long candidateId;
+//		String paramValue;
+//		String whichPageToView;
+//		Map<String,String> params;
+//        params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         //paramValue = params.get("candidateId");
         //whichPageToView = params.get("pageName");
         //System.out.println("paramValue = " + paramValue + " page to view = " + whichPageToView);
         //candidateId = Long.valueOf(paramValue);
         //candidateToBeViewed = mybean.getOneCandidate(candidateId);
        // phaseDetailsByCandidateIdList = mybean.getPhaesDetailsByCandidateId(candidateId);
-		return "View Candidate";
+		//return "View Candidate";
 	}
 	
 	public String viewPendingCandidatesOfCertainPhase()

@@ -3,10 +3,11 @@
  */
 package pagecode;
 
-import javax.faces.component.html.HtmlCommandButton;
-import javax.faces.component.html.HtmlForm;
-import javax.faces.component.html.HtmlOutputText;
+import javax.faces.component.html.HtmlInputText;
 import javax.faces.component.UIComponent;
+import javax.faces.component.html.HtmlForm;
+import javax.faces.component.html.HtmlSelectBooleanCheckbox;
+import javax.faces.component.html.HtmlPanelGroup;
 
 /**
  * @author baraa.alaa
@@ -14,44 +15,110 @@ import javax.faces.component.UIComponent;
  */
 public class ViewCandidate extends PageCodeBase {
 
-	protected HtmlCommandButton button1;
-	protected HtmlCommandButton button2;
-	protected HtmlForm form;
-	protected HtmlOutputText outputID;
-	protected UIComponent l;
-	protected HtmlCommandButton getButton1() {
-		if (button1 == null) {
-			button1 = (HtmlCommandButton) findComponentInRoot("button1");
+	protected HtmlInputText FullNameCandidate;
+	protected HtmlInputText EmailCandidate;
+	protected HtmlInputText MobileNumberCandidate;
+	protected HtmlInputText PhoneNumberCandidate;
+	protected HtmlInputText BirthDateCandidate;
+	protected HtmlInputText ExperienceYearsCandidate;
+	protected HtmlInputText CurrentCompanyCandidate;
+	protected HtmlInputText Currentcandidateposition;
+	protected HtmlInputText CurrentCompanySalaryCandidate;
+	protected HtmlInputText commentInputId;
+	protected HtmlInputText dateCalender;
+	protected UIComponent repeatPhases;
+	protected HtmlForm myForm;
+	protected HtmlSelectBooleanCheckbox myCheck;
+	protected HtmlPanelGroup ReasonOfFailureId;
+	protected HtmlInputText getFullNameCandidate() {
+		if (FullNameCandidate == null) {
+			FullNameCandidate = (HtmlInputText) findComponentInRoot("FullNameCandidate");
 		}
-		return button1;
+		return FullNameCandidate;
 	}
-
-	protected HtmlCommandButton getButton2() {
-		if (button2 == null) {
-			button2 = (HtmlCommandButton) findComponentInRoot("button2");
+	protected HtmlInputText getEmailCandidate() {
+		if (EmailCandidate == null) {
+			EmailCandidate = (HtmlInputText) findComponentInRoot("EmailCandidate");
 		}
-		return button2;
+		return EmailCandidate;
 	}
-
-	protected HtmlForm getForm() {
-		if (form == null) {
-			form = (HtmlForm) findComponentInRoot("form");
+	protected HtmlInputText getMobileNumberCandidate() {
+		if (MobileNumberCandidate == null) {
+			MobileNumberCandidate = (HtmlInputText) findComponentInRoot("MobileNumberCandidate");
 		}
-		return form;
+		return MobileNumberCandidate;
 	}
-
-	protected HtmlOutputText getOutputID() {
-		if (outputID == null) {
-			outputID = (HtmlOutputText) findComponentInRoot("outputID");
+	protected HtmlInputText getPhoneNumberCandidate() {
+		if (PhoneNumberCandidate == null) {
+			PhoneNumberCandidate = (HtmlInputText) findComponentInRoot("PhoneNumberCandidate");
 		}
-		return outputID;
+		return PhoneNumberCandidate;
 	}
-
-	protected UIComponent getL() {
-		if (l == null) {
-			l = (UIComponent) findComponentInRoot("l");
+	protected HtmlInputText getBirthDateCandidate() {
+		if (BirthDateCandidate == null) {
+			BirthDateCandidate = (HtmlInputText) findComponentInRoot("BirthDateCandidate");
 		}
-		return l;
+		return BirthDateCandidate;
+	}
+	protected HtmlInputText getExperienceYearsCandidate() {
+		if (ExperienceYearsCandidate == null) {
+			ExperienceYearsCandidate = (HtmlInputText) findComponentInRoot("ExperienceYearsCandidate");
+		}
+		return ExperienceYearsCandidate;
+	}
+	protected HtmlInputText getCurrentCompanyCandidate() {
+		if (CurrentCompanyCandidate == null) {
+			CurrentCompanyCandidate = (HtmlInputText) findComponentInRoot("CurrentCompanyCandidate");
+		}
+		return CurrentCompanyCandidate;
+	}
+	protected HtmlInputText getCurrentcandidateposition() {
+		if (Currentcandidateposition == null) {
+			Currentcandidateposition = (HtmlInputText) findComponentInRoot("Currentcandidateposition");
+		}
+		return Currentcandidateposition;
+	}
+	protected HtmlInputText getCurrentCompanySalaryCandidate() {
+		if (CurrentCompanySalaryCandidate == null) {
+			CurrentCompanySalaryCandidate = (HtmlInputText) findComponentInRoot("CurrentCompanySalaryCandidate");
+		}
+		return CurrentCompanySalaryCandidate;
+	}
+	protected HtmlInputText getCommentInputId() {
+		if (commentInputId == null) {
+			commentInputId = (HtmlInputText) findComponentInRoot("commentInputId");
+		}
+		return commentInputId;
+	}
+	protected HtmlInputText getDateCalender() {
+		if (dateCalender == null) {
+			dateCalender = (HtmlInputText) findComponentInRoot("dateCalender");
+		}
+		return dateCalender;
+	}
+	protected UIComponent getRepeatPhases() {
+		if (repeatPhases == null) {
+			repeatPhases = (UIComponent) findComponentInRoot("repeatPhases");
+		}
+		return repeatPhases;
+	}
+	protected HtmlForm getMyForm() {
+		if (myForm == null) {
+			myForm = (HtmlForm) findComponentInRoot("myForm");
+		}
+		return myForm;
+	}
+	protected HtmlSelectBooleanCheckbox getMyCheck() {
+		if (myCheck == null) {
+			myCheck = (HtmlSelectBooleanCheckbox) findComponentInRoot("myCheck");
+		}
+		return myCheck;
+	}
+	protected HtmlPanelGroup getReasonOfFailureId() {
+		if (ReasonOfFailureId == null) {
+			ReasonOfFailureId = (HtmlPanelGroup) findComponentInRoot("ReasonOfFailureId");
+		}
+		return ReasonOfFailureId;
 	}
 
 }
