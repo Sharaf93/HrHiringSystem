@@ -11,6 +11,8 @@ import javax.persistence.*;
  */
 @Entity
 @NamedQueries({
+@NamedQuery(name="getPhaseIdByPhaseOrder",query="SELECT c.id FROM Phas c WHERE c.phaseorder = :order"),
+@NamedQuery(name="getCountOfPhases",query="SELECT COUNT(c.id) FROM Phas c"),
 @NamedQuery(name="getAllPhases",query="SELECT c from Phas c"),
 @NamedQuery(name="getAllPhasesNames",query="SELECT c.name from Phas c"),
 @NamedQuery(name="getPhaseID",query = "SELECT c.id from Phas c WHERE c.name LIKE :pName"),
@@ -23,6 +25,14 @@ public class Phas implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", unique = true, nullable = false)
 	private long id;
+
+	public long getPhaseorder() {
+		return phaseorder;
+	}
+
+	public void setPhaseorder(long phaseorder) {
+		this.phaseorder = phaseorder;
+	}
 
 	@Column(name = "NAME", nullable = false, length = 50)
 	private String name;

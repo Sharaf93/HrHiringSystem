@@ -78,4 +78,45 @@ public class Bean {
     	query.setParameter("id", currentPhaseId);
     	return query.getResultList();
     }
+    
+    public Long getCountOfPhases ()
+    {
+    	Query query = em.createNamedQuery("getCountOfPhases");
+    	
+    	return (Long) query.getSingleResult();
+    }
+    
+    public Long getCandidateStatusID (String cssName)
+    {
+    	Query query = em.createNamedQuery("getCandidateStatusID");
+    	String param = "%" + cssName + "%";
+    	query.setParameter("cssName", param);
+    	return (Long) query.getSingleResult();
+    }
+    
+    public Long getPhaseIdByPhaseOrder(Long order)
+    {
+    	Query query = em.createNamedQuery("getPhaseIdByPhaseOrder");
+    	query.setParameter("order", order);
+    	return (Long) query.getSingleResult();
+    }
+    
+    public Long getPhaseStatusIdByPhaseName (String name)
+    {
+    	Query query = em.createNamedQuery("getPhaseStatusIdByPhaseName");
+    	String param = "%" + name + "%";
+    	query.setParameter("name", param);
+    	return (Long) query.getSingleResult();
+    }
+    
+    public void updateCandidateMerge(PhasesDetail phDetail, Candidate cand )
+    {
+    	System.out.println(phDetail);
+    	
+    	System.out.println("comments = " + phDetail.getComments() + " candidateID = " + Long.toString(phDetail.getId().getCandidatesid()) + "phaseID = " +  Long.toString(phDetail.getId().getPhasesid()));
+    	
+    	em.persist(phDetail);
+    	em.merge(cand);
+    	em.flush();
+    }
 }

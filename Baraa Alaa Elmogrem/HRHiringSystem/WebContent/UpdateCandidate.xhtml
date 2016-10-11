@@ -36,7 +36,7 @@
 								<!-- page title -->
 								<div class="page-title">
 									<div class="title_left">
-										<h3>Form Buttons</h3>
+										<h2 style="color: blue">#{ManagedBean.candidateToBeViewed.fullname}</h2>
 									</div>
 									<!-- /page_left -->
 								</div>
@@ -55,7 +55,7 @@
 											<div class="x_panel">
 												<!-- panel1 title -->
 												<div class="x_title">
-													<h2>Default Buttons</h2>
+													<h2 style="color: blue">#{ManagedBean.candidateToBeViewed.phase.name}</h2>
 													<!-- navigation-bar of panel1 -->
 													<ul class="nav navbar-right panel_toolbox">
 														<li><a class="collapse-link"><i
@@ -71,34 +71,46 @@
 												<!-- panel1 content -->
 												<div class="x_content">
 
-
-
 													<div class="form-group">
 														<label>status: </label> <br /> <label class="switch">
 															<h:selectBooleanCheckbox id="myCheck"
-																styleClass="selectBooleanCheckbox" onchange="check()" /><span
+																styleClass="selectBooleanCheckbox" onchange="check()" value="#{ManagedBean.phaseStatus}" /><span
 															class="slider round" />
 														</label>
 													</div>
 
 													<div class="form-group">
 														<h:outputLabel class="control-label" value="Date :" />
-														<h:inputText id="dateCalender"
+														<h:inputText value="#{ManagedBean.currentPhaseDetail.dateofphase}" id="dateCalender"
 															class="form-control myCalender"></h:inputText>
 													</div>
 
 													<div id="ReasonOfFailureId" class="form-group">
 														<label>Reason Of Failure : </label>
 														<h:selectOneMenu class="form-control"
-															value="#{ManagedBean.test}">
+															value="#{ManagedBean.reasonOfFailure}">
 															<f:selectItems value="#{ManagedBean.reasonsDropDownMap}"></f:selectItems>
 														</h:selectOneMenu>
 													</div>
 
 													<div class="form-group">
 														<label class="control-label">Comment : </label>
-														<h:inputText class="form-control" id="commentInputId"></h:inputText>
+														<h:inputText value="#{ManagedBean.currentPhaseDetail.comments}" class="form-control" id="commentInputId"></h:inputText>
 													</div>
+													
+													<!-- command buttons -->
+											<div class="form-group">
+												<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+													<h:commandButton styleClass="commandButton" type="submit" value="Update"
+														class="btn btn-primary"
+														action="#{ManagedBean.UpdatePhaseOfCandidate}">
+														<f:param name="candidateId" value="#{ManagedBean.candidateToBeViewed.id}" ></f:param>
+													</h:commandButton>
+													<h:commandButton action="#{ManagedBean.cancel}" type="submit" value="Cancel"
+														immediate="true" class="btn btn-warning"></h:commandButton>
+												</div>
+											</div>
+											<!-- command buttons -->
 
 
 												</div>
