@@ -183,33 +183,24 @@
               
               
             
-              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Sources <small>Per Period</small></h2>
+                    <h2>Sources <small>Pass/Fail</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Pass</a>
-                          </li>
-                          <li><a href="#">Fail</a>
-                          </li>
-                        </ul>
                       </li>
                       <li><a class="close-link"><i class="fa fa-close"></i></a>
                       </li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content">
-                    <div id="echart_donut" style="height:450px;"></div>
+                  <div class="x_content1">
+                    <div id="graph_bar_group" style="width:100%; height:280px;"></div>
                   </div>
                 </div>
               </div>
-    
+              <div class="clearfix"></div>
             </div>
             
           </div>
@@ -405,8 +396,9 @@ function renderrs(){
 	  	jsonObjectPendingAnalysis(jsonArray[1]);
 	  	jsonObjectPassAnalysis(jsonArray[2]);
 	  	jsonObjectSourcesPass(jsonArray[3]);
-	  	jsonObjectReasonsOfFailure(jsonArray[4]);
-	  	jsonObjectSources(jsonArray[5]);
+	  	jsonObjectSourcesFail(jsonArray[4]);
+	  	jsonObjectReasonsOfFailure(jsonArray[5]);
+	  	jsonObjectSources(jsonArray[6]);
 	  	
 	  	//for(var i in jsonArray){
 	  		//console.log(i);
@@ -467,9 +459,63 @@ function renderrs(){
 	  			scadPass = obj.count;
 	  		}
   		}
-  		donutGraphSourcesPass();		
+  		//donutGraphSourcesPassAndFail();		
 	}
+  
 </script>
+
+
+<script>
+	function resetSourcesFail(){
+		facebookFail=0;
+		wuzzufFail=0;
+		referralFail=0;
+		linkedinFail=0;
+		gucFail=0;
+		msaFail=0;
+		companyWebsiteFail=0;
+		americanChamberFail=0;
+		scadFail=0;
+	}
+	function jsonObjectSourcesFail(jsonArray){
+		resetSourcesFail();
+		for(var i in jsonArray){
+	  		var obj = jsonArray[i];
+	  		var name = obj.name;
+	  		if(name === "Facebook"){
+	  			facebookFail = obj.count;
+	  		}
+	  		if(name === "Wuzzuf"){
+	  			wuzzufFail = obj.count;
+	  		}
+	  		if(name === "Referral"){
+	  			referralFail = obj.count;
+	  		}
+	  		if(name === "LinkedIn"){
+	  			linkedinFail = obj.count;
+	  		}
+	  		if(name === "GUC-Employment Fair"){
+	  			gucFail = obj.count;
+	  		}
+	  		if(name === "MSA-Employment Fair"){
+	  			msaFail = obj.count;
+	  		}
+	  		if(name === "Company Website"){
+	  			companyWebsiteFail = obj.count;
+	  		}
+	  		if(name === "American Chamber"){
+	  			americanChamberFail = obj.count;
+	  		}
+	  		if(name === "GUC-SCAD"){
+	  			scadFail = obj.count;
+	  		}
+  		}
+  		donutGraphSourcesPassAndFail();		
+	}
+  
+</script>
+
+
 
 <script>
 	function resetFailAnalysis(){
@@ -758,7 +804,7 @@ var endDate;
     barGraphFailAnalysis();
     pieGraphPendingAnalysis();
     barGraphPassAnalysis();
-    donutGraphSourcesPass();
+    donutGraphSourcesPassAndFail();
     donutChartSources();
     pieChartReasonsOfFailure();
    });
@@ -1450,8 +1496,37 @@ function pieGraphPendingAnalysis(){
      
   var facebookPass,wuzzufPass,referralPass,linkedinPass,gucPass,msaPass;
   var companyWebsitePass,americanChamberPass,scadPass;
-function donutGraphSourcesPass(){
-	var echartDonut = echarts.init(document.getElementById('echart_donut'), theme);
+  var facebookFail,wuzzufFail,referralFail,linkedinFail,gucFail,msaFail;
+  var companyWebsiteFail,americanChamberFail,scadFail;
+function donutGraphSourcesPassAndFail(){
+		Morris.Bar({
+		          element: 'graph_bar_group',
+		          data: [
+		            {"source": "Facebook", "Passed": facebookPass, "Failed": facebookFail},
+		            {"source": "Wuzzuf", "Passed": wuzzufPass, "Failed": wuzzufFail},
+		            {"source": "Referral", "Passed": referralPass, "Failed": referralFail},
+		            {"source": "Linkedin", "Passed": linkedinPass, "Failed": linkedinFail},
+		            {"source": "GUC- Employment fair", "Passed": gucPass, "Failed": gucFail},
+		            {"source": "MSA- Employment fair", "Passed": msaPass, "Failed": msaFail},
+		            {"source": "Company- website", "Passed": companyWebsitePass, "Failed": companyWebsiteFail},
+		            {"source": "American Chamber", "Passed": americanChamberPass, "Failed": americanChamberFail},
+		            {"source": "SCAD GUC", "Passed": scadPass, "Failed": scadFail}
+		          ],
+		          xkey: 'source',
+		          barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+		          ykeys: ['Passed', 'Failed'],
+		          labels: ['Pass', 'Fail'],
+		          hideHover: 'auto',
+		          xLabelAngle: 60,
+		          resize: true
+		        });
+		     }
+
+
+
+
+
+	/*	var echartDonut = echarts.init(document.getElementById('echart_donut'), theme);
      echartDonut.setOption({
        tooltip: {
          trigger: 'item',
@@ -1542,79 +1617,79 @@ function donutGraphSourcesPass(){
          	name: 'SCAD GUC'
          }]
        }]
-     });  
-     }
+     });   */
 
 
 //Pie Chart for Sources
 	var facebook,wuzzuf,referral,linkedin,guc,msa,companyWebsite,americanChamber,scad;
 	function donutChartSources(){
-    var echartPie = echarts.init(document.getElementById('echart_pie'), theme);
-     echartPie.setOption({
-       tooltip: {
-         trigger: 'item',
-         formatter: "{a} <br/>{b} : {c} ({d}%)"
-       },
-       legend: {
-         x: 'center',
-         y: 'bottom',
-         data: ['Facebook', 'Wuzzuf', 'Referral', 'Linkedin', 'GUC- Employment fair', 'MSA- Employment fair',
-         'Company- website', 'American Chamber','SCAD GUC']
-       },
-       toolbox: {
-          show: true,
-          feature: {
-            magicType: {
-              show: true,
-              type: ['pie', 'funnel']
-            },
-            restore: {
-              show: true,
-              title: "Restore"
-            },
-            saveAsImage: {
-              show: true,
-              title: "Save Image"
-            }
-          }
-        },
-       calculable: true,
-       series: [{
-         name: 'Source',
-         type: 'pie',
-         radius: '55%',
-         center: ['50%', '48%'],
-         data: [{
-           value: facebook,
-           name: 'Facebook'
-         }, {
-           value: wuzzuf,
-           name: 'Wuzzuf'
-         }, {
-           value: referral,
-           name: 'Referral'
-         }, {
-           value: linkedin,
-           name: 'Linkedin'
-         }, {
-           value: guc,
-           name: 'GUC- Employment fair'
-         }, {
-         	value: msa,
-         	name: 'MSA- Employment fair'
-         }, {
-         	value: companyWebsite,
-         	name: 'Company- website'
-         }, {
-         	value: americanChamber,
-         	name: 'American Chamber'
-         }, {
-         	value: scad,
-         	name: 'SCAD GUC'
-         }]
-       }]
-     });
-     }
+		var echartPie = echarts.init(document.getElementById('echart_pie'), theme);
+	     echartPie.setOption({
+	       tooltip: {
+	         trigger: 'item',
+	         formatter: "{a} <br/>{b} : {c} ({d}%)"
+	       },
+	       legend: {
+	         x: 'center',
+	         y: 'bottom',
+	         data: ['Facebook', 'Wuzzuf', 'Referral', 'Linkedin', 'GUC- Employment fair', 'MSA- Employment fair',
+	         'Company- website', 'American Chamber','SCAD GUC']
+	       },
+	       toolbox: {
+	          show: true,
+	          feature: {
+	            magicType: {
+	              show: true,
+	              type: ['pie', 'funnel']
+	            },
+	            restore: {
+	              show: true,
+	              title: "Restore"
+	            },
+	            saveAsImage: {
+	              show: true,
+	              title: "Save Image"
+	            }
+	          }
+	        },
+	       calculable: true,
+	       series: [{
+	         name: 'Source',
+	         type: 'pie',
+	         radius: '55%',
+	         center: ['50%', '48%'],
+	         data: [{
+	           value: facebook,
+	           name: 'Facebook'
+	         }, {
+	           value: wuzzuf,
+	           name: 'Wuzzuf'
+	         }, {
+	           value: referral,
+	           name: 'Referral'
+	         }, {
+	           value: linkedin,
+	           name: 'Linkedin'
+	         }, {
+	           value: guc,
+	           name: 'GUC- Employment fair'
+	         }, {
+	         	value: msa,
+	         	name: 'MSA- Employment fair'
+	         }, {
+	         	value: companyWebsite,
+	         	name: 'Company- website'
+	         }, {
+	         	value: americanChamber,
+	         	name: 'American Chamber'
+	         }, {
+	         	value: scad,
+	         	name: 'SCAD GUC'
+	         }]
+	       }]
+	     }); 
+	}
+     
 </script>
 
 </ui:define>

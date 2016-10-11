@@ -64,11 +64,11 @@ public class RestGraph {
 		array.add(getJsonPendingAnalysis(chosenEmployeeID,start,end));//1
 		array.add(getJsonPassAnalysis(chosenEmployeeID,start,end));//2
 		array.add(getJsonSourcesPass(chosenEmployeeID,start,end));//3
+		array.add(getJsonSourcesFail(chosenEmployeeID,start,end));//4
+
 		
-		
-		//Needs editing in the managerDashboard 
-		array.add(getJsonReasonsOfFailure(chosenEmployeeID,start,end,"None","None"));//4
-		array.add(getJsonSources(chosenEmployeeID,start,end,"None","None"));//5
+		array.add(getJsonReasonsOfFailure(chosenEmployeeID,start,end,"None","None"));//5
+		array.add(getJsonSources(chosenEmployeeID,start,end,"None","None"));//6
 		
 	
 		return Response.status(200).entity(array).build();
@@ -225,6 +225,34 @@ public class RestGraph {
 		 
 		return array;	
 	}
+	
+	//Get JsonArray of ReportInformationForSourcesPass
+		public JSONArray getJsonSourcesFail(int hrID, Date startDate, Date endDate){
+			HashMap<Integer, ReportsDTO> sources = reportsEJB.getReportInformationForSourcesFail(hrID, startDate, endDate);
+			
+			JSONArray array = new JSONArray();
+			Iterator<Entry<Integer, ReportsDTO>> it = sources.entrySet().iterator();
+			
+			 while (it.hasNext()) {
+		    	JSONObject jsonObject = new JSONObject();
+		    	Map.Entry pair = (Map.Entry)it.next();
+		    	
+		    	jsonObject.put("key", pair.getKey());
+		    	
+		    	ReportsDTO tempReportsDTO = (ReportsDTO) pair.getValue();
+		    	
+		    	jsonObject.put("id", tempReportsDTO.getId());
+		    	jsonObject.put("name", tempReportsDTO.getName());
+		    	jsonObject.put("count", tempReportsDTO.getCount());
+		    	
+		    	
+		    	array.add(jsonObject);
+		    }
+			
+			 System.out.println(" =========== result: "+array.toString() + "================");
+			 
+			return array;	
+		}
 	
 	//Get JsonArray of ReportInformationForReasonsOfFailure
 	public JSONArray getJsonReasonsOfFailure(int hrID, Date startDate, Date endDate, 
