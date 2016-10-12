@@ -9,6 +9,8 @@ import javax.persistence.*;
  * 
  */
 @Entity
+@NamedQueries({
+	@NamedQuery(name="getTestDetailsByCandidateId",query="SELECT t FROM TestsDetail t WHERE t.candidate.id = :id")})
 @Table(name="TESTSDETAILS",schema="HRHSSCHEMA")
 public class TestsDetail implements Serializable {
 	private static final long serialVersionUID = 1L;

@@ -30,7 +30,7 @@
 								<!-- page title -->
 								<div class="page-title">
 									<div class="title_left">
-										<h3>Form Buttons</h3>
+										<h3 style="color: MidnightBlue;">View Candidate</h3>
 									</div>
 									<!-- /page_left -->
 								</div>
@@ -46,7 +46,7 @@
 										<div class="x_panel">
 											<!-- panel1 title -->
 											<div class="x_title">
-												<h2>Default Buttons</h2>
+												<h2 style="color: blue">Personal Info.</h2>
 												<!-- navigation-bar of panel1 -->
 												<ul class="nav navbar-right panel_toolbox">
 													<li><a class="collapse-link"><i
@@ -117,14 +117,19 @@
 										<!-- /x_panel -->
 										<!-- /panel1 -->
 
-										<ui:repeat var="O" value="#{ManagedBean.phaseDetailsByCandidateIdList}">
+										<ui:repeat id="phaseRepeat" var="o"
+											value="#{ManagedBean.phaseDetailsByCandidateIdList}">
 											<!-- panel_N -->
 											<div class="x_panel">
 												<!-- panel1 title -->
 												<div class="x_title">
-													<h2>#{o.phas.name}</h2>
+													<h2 style="color: blue">#{o.phas.name}</h2>
+													
 													<!-- navigation-bar of panel1 -->
 													<ul class="nav navbar-right panel_toolbox">
+														<li><h:outputLabel id="PhaseStatus2"
+																style="font-weight: bold; font-size: 160%; text-align: left;" class="control-label" value="#{o.phaseStatus.name}" />
+														</li>
 														<li><a class="collapse-link"><i
 																class="fa fa-chevron-up"></i></a></li>
 														<li><a class="close-link"><i class="fa fa-close"></i></a></li>
@@ -137,10 +142,43 @@
 
 												<!-- panel1 content -->
 												<div class="x_content">
+
 													<div class="form-group">
 														<h:outputLabel class="control-label"
-															value="Name : #{ManagedBean.candidateToBeViewed.fullname}" />
+															value="Date : #{o.dateofphase}" />
 													</div>
+
+													<h:panelGroup layout="block"
+														rendered="#{o.phas.name eq 'Tests Phase'}">
+														<ui:repeat id="testsRepeat" var="m" value="#{ManagedBean.testDetailsList}">
+															<div class="form-group">
+																<h:outputLabel class="control-label"
+																	value="#{m.test.name} Test Score : #{m.score}" />
+															</div>
+														</ui:repeat>
+													</h:panelGroup>
+
+													<div class="form-group">
+														<h:outputLabel rendered="#{o.phas.name eq 'HR Interview'}"
+															class="control-label"
+															value="Current/Expected Salary : #{ManagedBean.candidateToBeViewed.currentsalary}" />
+													</div>
+
+													<div class="form-group">
+														<h:outputLabel
+															rendered="#{ManagedBean.candidateToBeViewed.candidatestatus.status eq 'Archived' and ManagedBean.candidateToBeViewed.phase.name eq o.phas.name}"
+															class="control-label"
+															value="Reason Of Failure : #{ManagedBean.candidateToBeViewed.currentsalary}" />
+													</div>
+
+
+													<div class="form-group">
+														<h:outputLabel class="control-label"
+															value="comment : #{o.comments}" />
+													</div>
+
+
+
 												</div>
 												<!-- x_content -->
 											</div>

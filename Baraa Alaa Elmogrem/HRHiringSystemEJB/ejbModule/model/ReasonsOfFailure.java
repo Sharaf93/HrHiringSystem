@@ -12,7 +12,7 @@ import javax.persistence.*;
  */
 @Entity
 @NamedQueries({
-@NamedQuery(name="getAllReasonsOfFailure",query="SELECT c.name from ReasonsOfFailure c"),
+@NamedQuery(name="getAllReasonsOfFailure",query="SELECT c from ReasonsOfFailure c"),
 @NamedQuery(name="getReasonOfFailureID",query = "SELECT c.id from ReasonsOfFailure c WHERE c.name LIKE :rofName"
 )})
 @Table(name="REASONSOFFAILURE",schema="HRHSSCHEMA")

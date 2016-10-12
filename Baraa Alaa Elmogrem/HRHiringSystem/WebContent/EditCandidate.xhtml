@@ -15,7 +15,7 @@
 <h:body class="nav-md">
 	<ui:composition template="/GeneralTemplate.xhtml">
 		<ui:define name="title">
-			<title>View Candidate</title>
+			<title>Edit Candidate</title>
 		</ui:define>
 
 		<ui:define name="content">
@@ -29,7 +29,7 @@
 								<!-- page title -->
 								<div class="page-title">
 									<div class="title_left">
-										<h3>Form Buttons</h3>
+										<h3 style="color: MidnightBlue;">Edit Candidate</h3>
 									</div>
 									<!-- /page_left -->
 								</div>
@@ -48,7 +48,7 @@
 											<div class="x_panel">
 												<!-- panel1 title -->
 												<div class="x_title">
-													<h2>Default Buttons</h2>
+													<h2 style="color: blue">Personal Info.</h2>
 													<!-- navigation-bar of panel1 -->
 													<ul class="nav navbar-right panel_toolbox">
 														<li><a class="collapse-link"><i
@@ -214,15 +214,6 @@
 															value="#{ManagedBean.candidateToBeViewed.currentposition}"></h:inputText>
 
 													</div>
-													<div
-														class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-														<h:outputLabel>Current/Expected Salary :</h:outputLabel>
-														<h:inputText type="text" class="form-control"
-															id="CurrentCompanySalaryCandidate"
-															value="#{ManagedBean.candidateToBeViewed.currentsalary}"></h:inputText>
-
-													</div>
-
 
 													<div
 														class="col-lg-4 col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
@@ -258,64 +249,174 @@
 											<ui:repeat id="repeatPhases" var="o"
 												value="#{ManagedBean.phaseDetailsByCandidateIdList}"
 												varStatus="stat">
-												<!-- panelN -->
-												<div class="x_panel">
-													<!-- panelN title -->
-													<div class="x_title">
-														<h2>#{o.phas.name}</h2>
-														<!-- navigation-bar of panelN -->
-														<ul class="nav navbar-right panel_toolbox">
-															<li><a class="collapse-link"><i
-																	class="fa fa-chevron-up"></i></a></li>
-															<li><a class="close-link"><i class="fa fa-close"></i></a></li>
-														</ul>
-														<!-- /navigation-bar of panelN -->
-														<div class="clearfix"></div>
+												<h:panelGroup
+													rendered="#{ManagedBean.candidateToBeViewed.phase.name != o.phas.name}"
+													layout="block">
+													<!-- panelN -->
+													<div class="x_panel">
+														<!-- panelN title -->
+														<div class="x_title">
+															<h2 style="color: blue">#{o.phas.name}</h2>
+															<!-- navigation-bar of panelN -->
+															<ul class="nav navbar-right panel_toolbox">
+																<li><h:outputLabel id="PhaseStatus2"
+																		style="font-weight: bold; font-size: 160%; text-align: left;"
+																		class="control-label" value="#{o.phaseStatus.name}" />
+																</li>
+																<li><a class="collapse-link"><i
+																		class="fa fa-chevron-up"></i></a></li>
+																<li><a class="close-link"><i
+																		class="fa fa-close"></i></a></li>
+															</ul>
+															<!-- /navigation-bar of panelN -->
+															<div class="clearfix"></div>
+														</div>
+														<!-- /x_title -->
+														<!-- /panelN title -->
+
+														<!-- panelN content -->
+														<div class="x_content">
+
+															<div class="form-group">
+																<h:outputLabel class="control-label" value="Date :" />
+																<h:inputText value="#{o.dateofphase}" id="dateCalender"
+																	class="form-control myCalender"></h:inputText>
+															</div>
+
+															<h:panelGroup layout="block"
+																rendered="#{o.phas.name eq 'Tests Phase'}">
+																<ui:repeat id="testsRepeat" var="m"
+																	value="#{ManagedBean.testDetailsList}">
+																	<div class="form-group">
+																		<h:outputLabel class="control-label"
+																			value="#{m.test.name} Test Score : #{m.score}" />
+																	</div>
+																</ui:repeat>
+															</h:panelGroup>
+
+															<div class="form-group has-feedback">
+																<h:panelGroup layout="block"
+																	rendered="#{o.phas.name eq 'HR Interview'}">
+																	<h:outputLabel>Current/Expected Salary :</h:outputLabel>
+																	<h:inputText type="text" class="form-control"
+																		id="CurrentCompanySalaryCandidate"
+																		value="#{ManagedBean.candidateToBeViewed.currentsalary}"></h:inputText>
+
+																</h:panelGroup>
+															</div>
+
+															<div class="form-group">
+																<label class="control-label">Comment : </label>
+																<h:inputText value="#{o.comments}" class="form-control"
+																	id="commentInputId"></h:inputText>
+															</div>
+
+														</div>
+
+														<!-- /x_content -->
+														<!-- /panelN content -->
+
 													</div>
-													<!-- /x_title -->
-													<!-- /panelN title -->
+													<!-- /x_paneN -->
+													<!-- /panelN -->
 
-													<!-- panelN content -->
-													<div class="x_content">
-
-
-
-														<div class="form-group">
-															<label>status: </label> <br /> <label class="switch">
-																<h:selectBooleanCheckbox id="myCheck"
-																	styleClass="selectBooleanCheckbox" onchange="check(#{stat.index})" /><span
-																class="slider round" />
-															</label>
-														</div>
-
-														<div class="form-group">
-															<h:outputLabel class="control-label" value="Date :" />
-															<h:inputText value="#{o.dateofphase}" id="dateCalender"
-																class="form-control myCalender"></h:inputText>
-														</div>
-
-														<h:panelGroup layout="block" id="ReasonOfFailureId" class="form-group">
-															<label>Reason Of Failure : </label>
-															<h:selectOneMenu class="form-control"
-																value="#{ManagedBean.test}">
-																<f:selectItems value="#{ManagedBean.reasonsDropDownMap}"></f:selectItems>
-															</h:selectOneMenu>
-														</h:panelGroup>
-
-														<div class="form-group">
-															<label class="control-label">Comment : </label>
-															<h:inputText value = "#{o.comments}" class="form-control" id="commentInputId"></h:inputText>
-														</div>
-
-													</div>
-
-													<!-- /x_content -->
-													<!-- /panelN content -->
-
-												</div>
-												<!-- /x_paneN -->
-												<!-- /panelN -->
+												</h:panelGroup>
 											</ui:repeat>
+
+
+
+													<!-- panelN -->
+													<div class="x_panel">
+														<!-- panelN title -->
+														<div class="x_title">
+															<h2 style="color: blue">#{ManagedBean.candidateToBeViewed.phase.name}</h2>
+															<!-- navigation-bar of panelN -->
+															<ul class="nav navbar-right panel_toolbox">
+																<li><h:outputLabel id="PhaseStatus1"
+																		style="font-weight: bold; font-size: 160%; text-align: left;"
+																		class="control-label" value="#{ManagedBean.currentPhaseDetailOfEdit.phaseStatus.name}" />
+																</li>
+																<li><a class="collapse-link"><i
+																		class="fa fa-chevron-up"></i></a></li>
+																<li><a class="close-link"><i
+																		class="fa fa-close"></i></a></li>
+															</ul>
+															<!-- /navigation-bar of panelN -->
+															<div class="clearfix"></div>
+														</div>
+														<!-- /x_title -->
+														<!-- /panelN title -->
+
+														<!-- panelN content -->
+														<div class="x_content">
+
+
+															<div class="form-group">
+																<h:panelGroup
+																	layout="block">
+																	<label>status: </label>
+																	<br />
+																	<label class="switch"> <h:selectBooleanCheckbox
+																			id="myCheck" styleClass="selectBooleanCheckbox"
+																			onchange="check()" value="#{ManagedBean.phaseStatus}" /><span
+																		class="slider round" />
+																	</label>
+																</h:panelGroup>
+															</div>
+
+															<div class="form-group">
+																<h:outputLabel class="control-label" value="Date :" />
+																<h:inputText value="#{ManagedBean.currentPhaseDetailOfEdit.dateofphase}" id="dateCalender2"
+																	class="form-control myCalender"></h:inputText>
+															</div>
+
+															<h:panelGroup layout="block"
+																rendered="#{ManagedBean.currentPhaseDetailOfEdit.phas.name eq 'Tests Phase'}">
+																<ui:repeat id="testsRepeat2" var="m"
+																	value="#{ManagedBean.testDetailsList}">
+																	<div class="form-group">
+																		<h:outputLabel class="control-label"
+																			value="#{m.test.name} Test Score : #{m.score}" />
+																	</div>
+																</ui:repeat>
+															</h:panelGroup>
+
+															<div class="form-group has-feedback">
+																<h:panelGroup layout="block"
+																	rendered="#{ManagedBean.currentPhaseDetailOfEdit.phas.name eq 'HR Interview'}">
+																	<h:outputLabel>Current/Expected Salary :</h:outputLabel>
+																	<h:inputText type="text" class="form-control"
+																		id="CurrentCompanySalaryCandidate2"
+																		value="#{ManagedBean.candidateToBeViewed.currentsalary}"></h:inputText>
+
+																</h:panelGroup>
+															</div>
+
+
+															<h:panelGroup
+																layout="block" id="ROFDIV" class="form-group">
+																<label>Reason Of Failure : </label>
+																<h:selectOneMenu class="form-control"
+																	value="#{ManagedBean.reasonOfFailureId}">
+																	<f:selectItems
+																		value="#{ManagedBean.reasonsDropDownMap}"></f:selectItems>
+																</h:selectOneMenu>
+															</h:panelGroup>
+
+															<div class="form-group">
+																<label class="control-label">Comment : </label>
+																<h:inputText value="#{ManagedBean.currentPhaseDetailOfEdit.comments}" class="form-control"
+																	id="commentInputId2"></h:inputText>
+															</div>
+
+														</div>
+
+														<!-- /x_content -->
+														<!-- /panelN content -->
+
+													</div>
+													<!-- /x_paneN -->
+													<!-- /panelN -->
 
 											<!-- command buttons -->
 											<div class="form-group">
@@ -351,27 +452,26 @@
 			</div>
 			<!-- /col-sm-9 -->
 		</ui:define>
-		
-			<ui:define name="script_links">
-		<script>
-			function check(id) {
-				document.getElementById("la2aaa").innerHTML = "myForm:repeatPhases:"+id+":ReasonOfFailureId";
-				if (document.getElementById("myForm:repeatPhases:"
-						+ id + ":myCheck").checked === true) {
-					document.getElementById("myForm:repeatPhases:"+id+":ReasonOfFailureId").style.display = "none";
+
+		<ui:define name="script_links">
+			<script>
+			function check() {
+				if (document.getElementById("myForm:myCheck").checked === true) {
+					document.getElementById("myForm:ROFDIV").style.display = "none";
 				}
 
 				else {
-					document.getElementById("myForm:repeatPhases:"+id+":ReasonOfFailureId").style.display = "block";
+					document.getElementById("myForm:ROFDIV").style.display = "block";
 				}
 			}
 		</script>
-		
-		<script src="DP.js"/>
-<script src="resources/gentelella-master/production/js/datepicker/daterangepicker.js"></script>
-		
-	</ui:define>
-		
+
+			<script src="DP.js" />
+			<script
+				src="resources/gentelella-master/production/js/datepicker/daterangepicker.js"></script>
+
+		</ui:define>
+
 	</ui:composition>
 
 	<script>

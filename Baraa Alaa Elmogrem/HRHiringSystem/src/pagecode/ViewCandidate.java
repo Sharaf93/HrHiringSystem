@@ -8,6 +8,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.component.html.HtmlForm;
 import javax.faces.component.html.HtmlSelectBooleanCheckbox;
 import javax.faces.component.html.HtmlPanelGroup;
+import javax.faces.component.html.HtmlOutputLabel;
 
 /**
  * @author baraa.alaa
@@ -30,6 +31,11 @@ public class ViewCandidate extends PageCodeBase {
 	protected HtmlForm myForm;
 	protected HtmlSelectBooleanCheckbox myCheck;
 	protected HtmlPanelGroup ReasonOfFailureId;
+	protected HtmlOutputLabel PhaseStatus;
+	protected UIComponent phaseRepeat;
+	protected HtmlOutputLabel PhaseStatus2;
+	protected UIComponent testsRepeat;
+	protected HtmlPanelGroup ROFDIV;
 	protected HtmlInputText getFullNameCandidate() {
 		if (FullNameCandidate == null) {
 			FullNameCandidate = (HtmlInputText) findComponentInRoot("FullNameCandidate");
@@ -78,12 +84,6 @@ public class ViewCandidate extends PageCodeBase {
 		}
 		return Currentcandidateposition;
 	}
-	protected HtmlInputText getCurrentCompanySalaryCandidate() {
-		if (CurrentCompanySalaryCandidate == null) {
-			CurrentCompanySalaryCandidate = (HtmlInputText) findComponentInRoot("CurrentCompanySalaryCandidate");
-		}
-		return CurrentCompanySalaryCandidate;
-	}
 	protected HtmlInputText getCommentInputId() {
 		if (commentInputId == null) {
 			commentInputId = (HtmlInputText) findComponentInRoot("commentInputId");
@@ -114,11 +114,29 @@ public class ViewCandidate extends PageCodeBase {
 		}
 		return myCheck;
 	}
-	protected HtmlPanelGroup getReasonOfFailureId() {
-		if (ReasonOfFailureId == null) {
-			ReasonOfFailureId = (HtmlPanelGroup) findComponentInRoot("ReasonOfFailureId");
+	protected UIComponent getPhaseRepeat() {
+		if (phaseRepeat == null) {
+			phaseRepeat = (UIComponent) findComponentInRoot("phaseRepeat");
 		}
-		return ReasonOfFailureId;
+		return phaseRepeat;
+	}
+	protected HtmlOutputLabel getPhaseStatus2() {
+		if (PhaseStatus2 == null) {
+			PhaseStatus2 = (HtmlOutputLabel) findComponentInRoot("PhaseStatus2");
+		}
+		return PhaseStatus2;
+	}
+	protected UIComponent getTestsRepeat() {
+		if (testsRepeat == null) {
+			testsRepeat = (UIComponent) findComponentInRoot("testsRepeat");
+		}
+		return testsRepeat;
+	}
+	protected HtmlPanelGroup getROFDIV() {
+		if (ROFDIV == null) {
+			ROFDIV = (HtmlPanelGroup) findComponentInRoot("ROFDIV");
+		}
+		return ROFDIV;
 	}
 
 }

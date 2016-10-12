@@ -11,8 +11,8 @@ import java.util.Date;
  */
 @NamedQueries(
 {
-@NamedQuery(name = "getPhaesDetailsByCandidateId", query="SELECT p from PhasesDetail p where p.id.candidatesid = :id")
-//get the phase details of a certain phase
+@NamedQuery(name = "getPhaesDetailsByCandidateId", query="SELECT p from PhasesDetail p where p.id.candidatesid = :id"),
+@NamedQuery(name = "getCertainPhaseDetail", query="SELECT p from PhasesDetail p where p.id.candidatesid = :candidateId AND p.id.phasesid = :phaseId")
 })
 @Entity
 @Table(name="PHASESDETAILS",schema="HRHSSCHEMA")

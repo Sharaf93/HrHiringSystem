@@ -14,6 +14,8 @@ import org.omg.Security.Public;
 import model.Candidate;
 import model.Phas;
 import model.PhasesDetail;
+import model.ReasonsOfFailure;
+import model.TestsDetail;
 
 /**
  * Session Bean implementation class Bean
@@ -55,7 +57,7 @@ public class Bean {
     }
     
     @SuppressWarnings("unchecked")
-	public List<String> getAllReasonsOfFailure()
+	public List<ReasonsOfFailure> getAllReasonsOfFailure()
     {
     	Query query = em.createNamedQuery("getAllReasonsOfFailure");
     	
@@ -110,13 +112,33 @@ public class Bean {
     }
     
     public void updateCandidateMerge(PhasesDetail phDetail, Candidate cand )
-    {
-    	System.out.println(phDetail);
-    	
-    	System.out.println("comments = " + phDetail.getComments() + " candidateID = " + Long.toString(phDetail.getId().getCandidatesid()) + "phaseID = " +  Long.toString(phDetail.getId().getPhasesid()));
-    	
+    {	
     	em.persist(phDetail);
     	em.merge(cand);
     	em.flush();
+    }
+    
+    public void editCandidateMerge(PhasesDetail phDetail, Candidate cand )
+    {	
+    	em.merge(phDetail);
+    	em.merge(cand);
+    	em.flush();
+    }
+    
+    @SuppressWarnings("unchecked")
+	public List<TestsDetail> getTestDetailsByCandidateId (Long candidateId)
+    {
+    	Query query = em.createNamedQuery("getTestDetailsByCandidateId");
+    	query.setParameter("id", candidateId);
+    	return query.getResultList();
+    }
+    
+    public PhasesDetail getCertainPhaseDetail(Long candidateId, Long phaseId )
+    {
+    	Query query = em.createNamedQuery("getCertainPhaseDetail");
+    	query.setParameter("candidateId", candidateId);
+    	query.setParameter("phaseId", phaseId);
+    	return (PhasesDetail) query.getSingleResult();
+
     }
 }

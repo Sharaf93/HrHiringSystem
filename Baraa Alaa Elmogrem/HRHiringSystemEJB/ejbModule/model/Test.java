@@ -23,6 +23,7 @@ public class Test implements Serializable {
 	@Column(name="NAME", nullable=false, length=30)
 	private String name;
 	
+	
 	//bi-directional many-to-one association to TestsDetail
 	@OneToMany(mappedBy="test")
 	private List<TestsDetail> testsDetails;
