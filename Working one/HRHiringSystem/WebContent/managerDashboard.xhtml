@@ -195,9 +195,12 @@
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content1">
-                    <div id="graph_bar_group" style="width:100%; height:280px;"></div>
+				  <div class="x_content">
+                    <canvas id="mybarChart3"></canvas>
                   </div>
+                <!--  <div class="x_content1">
+                    <div id="graph_bar_group" style="width:100%; height:280px;"></div>
+                  </div> -->
                 </div>
               </div>
               <div class="clearfix"></div>
@@ -1498,29 +1501,36 @@ function pieGraphPendingAnalysis(){
   var companyWebsitePass,americanChamberPass,scadPass;
   var facebookFail,wuzzufFail,referralFail,linkedinFail,gucFail,msaFail;
   var companyWebsiteFail,americanChamberFail,scadFail;
-function donutGraphSourcesPassAndFail(){
-		Morris.Bar({
-		          element: 'graph_bar_group',
-		          data: [
-		            {"source": "Facebook", "Passed": facebookPass, "Failed": facebookFail},
-		            {"source": "Wuzzuf", "Passed": wuzzufPass, "Failed": wuzzufFail},
-		            {"source": "Referral", "Passed": referralPass, "Failed": referralFail},
-		            {"source": "Linkedin", "Passed": linkedinPass, "Failed": linkedinFail},
-		            {"source": "GUC- Employment fair", "Passed": gucPass, "Failed": gucFail},
-		            {"source": "MSA- Employment fair", "Passed": msaPass, "Failed": msaFail},
-		            {"source": "Company- website", "Passed": companyWebsitePass, "Failed": companyWebsiteFail},
-		            {"source": "American Chamber", "Passed": americanChamberPass, "Failed": americanChamberFail},
-		            {"source": "SCAD GUC", "Passed": scadPass, "Failed": scadFail}
-		          ],
-		          xkey: 'source',
-		          barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
-		          ykeys: ['Passed', 'Failed'],
-		          labels: ['Pass', 'Fail'],
-		          hideHover: 'auto',
-		          xLabelAngle: 60,
-		          resize: true
-		        });
-		     }
+	function donutGraphSourcesPassAndFail(){
+		  var ctx = document.getElementById("mybarChart3");
+		  var mybarChart = new Chart(ctx, {
+			type: 'bar',
+			data: {
+			  labels: ["Facebook", "Wuzzuf", "Referral", "Linkedin", "GUC- Employment fair", "MSA- Employment fair", "Company- website", "American Chamber", "SCAD GUC"],
+			  datasets: [{
+				label: '# of Pass',
+				backgroundColor: "#26B99A",
+				data: [facebookPass, wuzzufPass, referralPass, linkedinPass, gucPass, msaPass, companyWebsitePass, americanChamberPass, scadPass]
+			  }, {
+				label: '# of Fail',
+				backgroundColor: "#03586A",
+				data: [facebookFail, wuzzufFail, referralFail, linkedinFail, gucFail, msaFail, companyWebsiteFail, americanChamberFail, scadFail]
+			  }]
+			},
+
+			options: {
+			  scales: {
+				yAxes: [{
+				  ticks: {
+					beginAtZero: true
+				  }
+				}]
+			  }
+			}
+		  });
+		 
+		 
+	}
 
 
 
