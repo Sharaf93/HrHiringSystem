@@ -1,3 +1,5 @@
+INSERT INTO HRHSSCHEMA.positions (name) VALUES ('Business Intelligence');
+INSERT INTO HRHSSCHEMA.positions (name) VALUES ('Associate Software Engineer');
 INSERT INTO HRHSSCHEMA.positions (name) VALUES ('Software Engineer');
 INSERT INTO HRHSSCHEMA.positions (name) VALUES ('Software Support Engineer');
 INSERT INTO HRHSSCHEMA.positions(name) VALUES ('Staff Software Engineer');

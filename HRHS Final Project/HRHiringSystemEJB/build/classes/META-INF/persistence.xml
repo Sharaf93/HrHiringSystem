@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="HRHiringSystemEJB" transaction-type="JTA">
+	<jta-data-source>jdbc/DB2DataSource</jta-data-source>
+		<class>model.Candidate</class>
+		<class>model.HRSource</class>
+		<class>model.Phas</class>
+		<class>model.PhasesDetail</class>
+		<class>model.PhasesDetailPK</class>
+		<class>model.ReasonsOfFailure</class>
+		<class>model.Position</class>
+		<class>model.PhaseStatus</class>
+		<class>model.Source</class>
+		<class>model.Test</class>
+		<class>model.TestsDetail</class>
+		<class>model.TestsDetailPK</class>
+		<class>model.CandidateStatus</class>
+		<class>model.OfferStatus</class>
+	<properties>
+
+		
+		
+	</properties>
+	</persistence-unit>
+</persistence>

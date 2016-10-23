@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<connections:connections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:connections="http://www.ibm.com/websphere/wdo/connections">
-  <connection id="HRHS">
-    <development xsi:type="connections:rsc-live-connection" id="HRHS_dev" name="HRHS"/>
-    <runtime xsi:type="connections:datasource-connection" auto-deploy="true" class-location="C:\Program Files (x86)\IBM\IBMIMShared\plugins\com.ibm.datatools.db2_2.2.0.v20131115_1748\driver\db2jcc4.jar;C:\Program Files (x86)\IBM\IBMIMShared\plugins\com.ibm.datatools.db2_2.2.0.v20131115_1748\driver\db2jcc_license_cisuz.jar" id="HRHS_runtime" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" database-name="HRHS" jndi-name="jdbc/HRHS" port-number="50000" resource-reference-name="HRHS" server-name="admin1-PC" sql-vendor-type="-1" userid="db2admin"/>
-  </connection>
-</connections:connections>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="HRHiringSystemEAR">
+        <wb-resource deploy-path="/" source-path="/" tag="defaultRootSource"/>
+        <dependent-module archiveName="HRHiringSystem.war" deploy-path="/" handle="module:/resource/HRHiringSystem/HRHiringSystem">
+            <dependent-object>Module_1472657252063</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="HRHiringSystemEJB.jar" deploy-path="/" handle="module:/resource/HRHiringSystemEJB/HRHiringSystemEJB">
+            <dependent-object>Module_1473947942113</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="HRHiringSystemEJBClient.jar" deploy-path="/lib" handle="module:/resource/HRHiringSystemEJBClient/HRHiringSystemEJBClient">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

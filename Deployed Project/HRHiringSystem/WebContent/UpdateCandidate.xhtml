@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Update Candidate</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" type="text/css" title="Style"
+		href="theme/stylesheet.css" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link href="css/datepicker3.css" rel="stylesheet" />
+	<link href="css/styles.css" rel="stylesheet" />
+	<link href="Switch.css" rel="stylesheet" />
+	<link href="resources/gentelella-master/build/css/custom.min.css"
+		rel="stylesheet" />
+</h:head>
+<h:body>
+
+	<ui:composition template="/GeneralTemplate.xhtml">
+		<ui:define name="content">
+
+			<ui:define name="title">
+				<title>Update Candidate</title>
+			</ui:define>
+
+			<h:panelGroup
+				rendered="#{ManagedBean.candidateToBeViewed.candidatestatus.status == 'Pending'}"
+				layout="block"
+				class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+				<div class="container body">
+					<div class="main_container">
+
+						<!-- page content -->
+						<div class="right_col" role="main" style="min-height: 1628px;">
+							<div class="">
+								<!-- page title -->
+								<div class="page-title">
+									<div class="title_left">
+										<h3 style="color: MidnightBlue;">Update Candidate</h3>
+									</div>
+									<!-- /page_left -->
+								</div>
+								<!-- /page-title -->
+
+								<div class="clearfix"></div>
+
+								<!-- panels -->
+								<div class="row">
+									<div class="col-md-12 col-sm-12 col-xs-12">
+										<h:form id="myForm"
+											class="form-horizontal form-label-left input_mask"
+											data-parsley-validate="true" novalidate="true">
+
+											<!-- panel1 -->
+											<div class="x_panel">
+												<!-- panel1 title -->
+												<div class="x_title">
+													<h2 id ="myPhaseName" style="color: blue">#{ManagedBean.candidateToBeViewed.phase.name}</h2>
+													<!-- navigation-bar of panel1 -->
+													<ul class="nav navbar-right panel_toolbox">
+														<li><a class="collapse-link"><i
+																class="fa fa-chevron-up"></i></a></li>
+														<li><a class="close-link"><i class="fa fa-close"></i></a></li>
+													</ul>
+													<!-- /navigation-bar of panel1 -->
+													<div class="clearfix"></div>
+												</div>
+												<!-- /x_title -->
+												<!-- /panel1 title -->
+
+												<!-- panel1 content -->
+												<div class="x_content">
+
+													<div class="form-group">
+														<label>status: </label> <br /> <label class="switch">
+															<h:selectBooleanCheckbox id="myCheck"
+																styleClass="selectBooleanCheckbox" onchange="check()"
+																value="#{ManagedBean.phaseStatus}" /><span
+															class="slider round" />
+														</label>
+													</div>
+
+													<div class="form-group">
+														<h:outputLabel class="control-label" value="Date :" />
+														<h:inputText
+															value="#{ManagedBean.currentPhaseDetail.dateofphase}"
+															id="dateCalender" class="form-control myCalender">
+															<f:convertDateTime pattern="MM/dd/yyyy" />
+														</h:inputText>
+													</div>
+
+													<h:panelGroup layout="block"
+														rendered="#{ManagedBean.candidateToBeViewed.phase.name eq 'Tests'}">
+														<ui:repeat id="testsRepeat2" var="m"
+															value="#{ManagedBean.testDetailsList}">
+															<div class="form-group">
+																<h:outputLabel class="control-label"
+																	value="#{m.test.name} Test Score : " />
+
+																<h:inputText value="#{m.score}" class="form-control" />
+															</div>
+														</ui:repeat>
+													</h:panelGroup>
+
+													<div id="ReasonOfFailureId" class="form-group">
+														<label>Reason Of Failure : </label>
+														<h:selectOneMenu class="form-control"
+															value="#{ManagedBean.reasonOfFailureId}">
+															<f:selectItems value="#{ManagedBean.reasonsDropDownMap}"></f:selectItems>
+														</h:selectOneMenu>
+													</div>
+
+													<h:panelGroup layout="block" id="OSID"
+														style="display: none;" class="form-group">
+														<label>Offer Status : </label>
+														<h:selectOneMenu class="form-control"
+															value="#{ManagedBean.offerStatusID}">
+															<f:selectItems
+																value="#{ManagedBean.offerStatusDropDownMap}"></f:selectItems>
+														</h:selectOneMenu>
+
+														<label class="control-label">Offer Rejection
+															Reason : </label>
+														<h:inputText value="#{ManagedBean.offerRejectionReason}"
+															class="form-control" id="OfferRejectionReasonID" />
+													</h:panelGroup>
+
+													<div class="form-group">
+														<label class="control-label">Comment : </label>
+														<h:inputText
+															value="#{ManagedBean.currentPhaseDetail.comments}"
+															class="form-control" id="commentInputId"></h:inputText>
+													</div>
+
+													<!-- command buttons -->
+													<div class="form-group">
+														<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+															<h:commandButton styleClass="commandButton" type="submit"
+																value="Update" class="btn btn-primary"
+																action="#{ManagedBean.UpdatePhaseOfCandidate}">
+																<f:param name="candidateId"
+																	value="#{ManagedBean.candidateToBeViewed.id}"></f:param>
+															</h:commandButton>
+															<h:commandButton action="#{ManagedBean.cancel}"
+																type="submit" value="Cancel" immediate="true"
+																class="btn btn-warning">
+																<f:param name="candidateId"
+																	value="#{ManagedBean.candidateToBeViewed.id}"></f:param>
+															</h:commandButton>
+														</div>
+													</div>
+													<!-- command buttons -->
+
+
+												</div>
+												<!-- /x_content -->
+												<!-- /panel1 content -->
+
+											</div>
+											<!-- /x_pane1 -->
+											<!-- /panel1 -->
+
+
+										</h:form>
+
+									</div>
+									<!-- /col-md-6 -->
+								</div>
+								<!-- /row -->
+							</div>
+							<!-- /empty class -->
+						</div>
+						<!-- /right_col -->
+						<!-- /page content -->
+
+					</div>
+					<!-- /main_container -->
+				</div>
+				<!-- /container-body -->
+			</h:panelGroup>
+			<!-- /col-sm-9 -->
+
+			<h:panelGroup
+				rendered="#{ManagedBean.candidateToBeViewed.candidatestatus.status != 'Pending'}"
+				layout="block"
+				class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+				<div class="container body">
+					<div class="main_container">
+
+						<!-- page content -->
+						<div class="right_col" role="main" style="min-height: 1628px;">
+							<div class="">
+								<!-- page title -->
+								<div class="page-title">
+									<div class="title_left">
+										<h3 style="color: MidnightBlue;">Update Candidate</h3>
+									</div>
+									<!-- /page_left -->
+								</div>
+								<!-- /page-title -->
+
+								<div class="clearfix"></div>
+
+								<!-- panels -->
+								<div class="row">
+									<div class="col-md-12 col-sm-12 col-xs-12">
+										<!-- panel1 -->
+										<div class="x_panel">
+											<!-- panel1 title -->
+											<div class="x_title">
+												<h2 style="color: red">Update Error</h2>
+												<!-- navigation-bar of panel1 -->
+												<ul class="nav navbar-right panel_toolbox">
+													<li><a class="collapse-link"><i
+															class="fa fa-chevron-up"></i></a></li>
+													<li><a class="close-link"><i class="fa fa-close"></i></a></li>
+												</ul>
+												<!-- /navigation-bar of panel1 -->
+												<div class="clearfix"></div>
+											</div>
+											<!-- /x_title -->
+											<!-- /panel1 title -->
+
+											<!-- panel1 content -->
+											<div class="x_content">
+
+												<div class="form-group">
+													<h:outputLabel value="This Candidate Can not be Updated"></h:outputLabel>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</h:panelGroup>
+
+
+
+		</ui:define>
+		<ui:define name="script_links">
+			<script>
+				function check(id) {
+					if (document.getElementById("myForm:myCheck").checked === true) {
+						document.getElementById("ReasonOfFailureId").style.display = "none";
+						
+						if (document.getElementById("myPhaseName").innerHTML == "Presentation")
+						{
+							document.getElementById("myForm:OSID").style.display = "block";
+						}
+						
+					}
+
+					else {
+						document.getElementById("ReasonOfFailureId").style.display = "block";
+						
+						if (document.getElementById("myPhaseName").innerHTML == "Presentation")
+						{
+							document.getElementById("myForm:OSID").style.display = "none";
+						}	
+						
+					}
+				}
+			</script>
+			<script src="DP.js" />
+			<script
+				src="resources/gentelella-master/production/js/datepicker/daterangepicker.js"></script>
+		</ui:define>
+	</ui:composition>
+
+	<script>
+		function check() {
+
+			if (document.getElementById("myForm:myCheck").checked === true) {
+				document.getElementById("ReasonOfFailureId").style.display = "none";
+			}
+
+			else {
+				document.getElementById("ReasonOfFailureId").style.display = "block";
+			}
+		}
+	</script>
+
+	<script>
+		if (document.getElementById("myForm:myCheck").checked === true) {
+			document.getElementById("ReasonOfFailureId").style.display = "none";
+		}
+
+		else {
+			document.getElementById("ReasonOfFailureId").style.display = "block";
+		}
+	</script>
+
+	<script src="js/lumino.glyphs.js"></script>
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/chart.min.js"></script>
+	<script src="js/easypiechart.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script src="DP.js" />
+	<script
+		src="resources/gentelella-master/production/js/moment/moment.min.js"></script>
+	<script
+		src="resources/gentelella-master/production/js/datepicker/daterangepicker.js"></script>
+
+</h:body>
+</html>

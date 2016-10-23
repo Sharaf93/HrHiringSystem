@@ -10,3 +10,7 @@ INSERT INTO HRHSSCHEMA.reasonsOfFailure (name) VALUES ('Gender');
 INSERT INTO HRHSSCHEMA.reasonsOfFailure (name) VALUES ('Age');
 INSERT INTO HRHSSCHEMA.reasonsOfFailure  (name) VALUES ('Attitude');
 INSERT INTO HRHSSCHEMA.reasonsOfFailure (name) VALUES ('Technical Competence');
+INSERT INTO HRHSSCHEMA.reasonsOfFailure (name) VALUES ('Already Contacted Before');
+INSERT INTO HRHSSCHEMA.reasonsOfFailure (name) VALUES ('Failed CV');
+INSERT INTO HRHSSCHEMA.reasonsOfFailure (name) VALUES ('Irrelevant Education');
+INSERT INTO HRHSSCHEMA.reasonsOfFailure (name) VALUES ('None');
